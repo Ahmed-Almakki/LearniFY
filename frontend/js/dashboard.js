@@ -1,4 +1,3 @@
-
 const fetchUserData = () => {
     // Assuming you stored the JWT token after login
     const token = localStorage.getItem('token'); // Retrieve the token from localStorage

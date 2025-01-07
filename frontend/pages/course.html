@@ -4,14 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Course - Learnify</title>
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/courses.css">
 </head>
 <body>
   <header>
-    <h1>Course Details</h1>
+    <h1>Course</h1>
   </header>
   <main>
-    <p>Welcome to your course. Here are the details and resources.</p>
+    <!-- Search Bar Section -->
+    <div class="search-container">
+      <input type="text" id="course-search" placeholder="Search for courses...">
+      <button id="search-button">Search</button>
+    </div>
+
+    <!-- Course Results (initially empty) -->
+    <div id="course-results">
+      <!-- Search results will be displayed here -->
+    </div>
   </main>
+  <footer>
+    <p>&copy; 2025 Learnify. All rights reserved.</p>
+  </footer>
+  <script src="../js/courses.js"></script>
 </body>
 </html>
