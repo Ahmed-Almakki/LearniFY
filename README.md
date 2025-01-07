@@ -72,7 +72,7 @@ Courses
 
 3. Run the development server using Nodemon:
 
-    npm run dev
+    * npm run dev
 4. The backend server will be running at http://localhost:3000.
 
 
