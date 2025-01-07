@@ -46,5 +46,5 @@ exports.validateUserLogin = [
 exports.validate = (req, res, next) => {
   const errors = validationResult(req).array();
   if (!errors.length) return next();
-  res.status(400).json({ success: false, error: errors[0].msg });
+  return res.status(400).json({ success: false, error: errors[0].msg });
 };

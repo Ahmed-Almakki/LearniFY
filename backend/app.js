@@ -1,9 +1,7 @@
 import dotenv from 'dotenv';
-import path from 'path';
 import cors from 'cors';
 import express from 'express';
 import mongoose from 'mongoose';
-import { fileURLToPath } from 'url';
 import Router from './routes/index.js';
 import studentRouter from './routes/student.js';
 import instructorRouter from './routes/instructor.js';
@@ -20,9 +18,6 @@ app.use(process.env.USER_API_PREFIX || '/api/user', Router);
 app.use(process.env.STUDENT_API_PREFIX || '/api/student', studentRouter);
 app.use(process.env.INSTRUCTOR_API_PREFIX || '/api/instructor', instructorRouter);
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-app.use('/UploadsFolder', express.static(path.join(__dirname, 'UploadsFolder')));
 // Error handling for undefined routes
 app.use((req, res) => {
   res.status(404).json({ success: false, message: 'Route not found' });

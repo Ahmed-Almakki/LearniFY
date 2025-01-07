@@ -1,6 +1,6 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import { Courses } from '../models/courses.js'
+import { Courses } from '../models/courses.js';
 import User from '../utils/userOp.js';
 import { sendError } from '../utils/helper.js';
 
@@ -96,7 +96,7 @@ export const loginUser = async (req, res) => {
     console.error(error);
     return sendError(res, 'Error logging in user.', 500);
   }
-}
+};
 
 export const RertiveUser = async (req, res) => {
   const user = await User.retriveUserById(req.user.id);
@@ -104,9 +104,9 @@ export const RertiveUser = async (req, res) => {
     return sendError(res, 'Cannot Retrive user', 404);
   }
   return res.status(200).json({ user });
-}
+};
 
-export const showAllCourse = async(req, res) => {
+export const showAllCourse = async (req, res) => {
   try {
     const courses = await Courses.find();
     return res.status(200).json({

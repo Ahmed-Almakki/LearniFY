@@ -1,6 +1,5 @@
 import quizzes from '../models/quizzes.js';
 
-
 async function createQuizes(options = {}) {
   try {
     const result = await quizzes.create(options);

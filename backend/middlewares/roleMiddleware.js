@@ -21,5 +21,5 @@ exports.requireRole = (requiredRole) => (req, res, next) => {
     });
   }
 
-  next(); // Proceed to the next middleware or controller
+  return next(); // Proceed to the next middleware or controller
 };

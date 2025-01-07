@@ -63,7 +63,7 @@ class ProgressController {
       return sendError(res, 'Quize not found in DB', 404);
     }
 
-    // the quiz is retrun as array of object you have to use quiz[0] to index the specific object 
+    // the quiz is retrun as array of object you have to use quiz[0] to index the specific object
     // Track number of correct quizes
     const numberCorrectAnswers = correctQuize(quiz[0].questions, answers);
 
@@ -99,11 +99,6 @@ class ProgressController {
       if (!result) {
         return sendError(res, 'Grad was not Found', 404);
       }
-
-      // const retgrad = await gradOperation.retriveGrad({ _id: CreateGrade._id });
-      // if (!retgrad) {
-      //   return sendError(res, 'cannot retrive grad docs', 404);
-      //}
 
       // calculate progress of student after each sumbit using scoreCalculation function
       fullProgress = scoreCalculation(result, result.length);

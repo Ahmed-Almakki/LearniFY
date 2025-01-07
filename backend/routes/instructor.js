@@ -3,6 +3,7 @@ import InstructorController from '../controllers/instructorController.js';
 import { authenticate } from '../middlewares/auth.js'; // Authentication middleware
 import { requireRole } from '../middlewares/roleMiddleware.js'; // Role middleware
 import QuizeController from '../controllers/quizController.js';
+
 const router = express.Router();
 
 // Ensure user is authenticated and has the 'instructor' role

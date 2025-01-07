@@ -5,7 +5,6 @@ import Enrollment from '../utils/enrollmetnOp.js';
 import { sendError } from '../utils/helper.js';
 import prog from '../utils/progressOp.js';
 import gradOp from '../utils/gradOp.js';
-import coursesOp from '../utils/coursesOp.js';
 
 class InstructorController {
   static async PostContent(req, res) {
@@ -127,27 +126,27 @@ class InstructorController {
     if (!courseId || !contentId) {
       return sendError(res, 'Missing courseId or contentId');
     }
-  
+
     try {
       const contentObjectId = new mongoose.Types.ObjectId(contentId);
-  
+
       // Delete the content from the Content collection
       const deletedContent = await Content.findByIdAndDelete(contentObjectId);
       if (!deletedContent) {
         return sendError(res, 'Content not found');
       }
-  
+
       // Remove the lesson that contains the deleted content from the lessons array
       const updatedCourse = await Courses.findOneAndUpdate(
         { _id: courseId },
-        { $pull: { lessons: { "content._id": contentObjectId } } },
-        { new: true }
+        { $pull: { lessons: { 'content._id': contentObjectId } } },
+        { new: true },
       );
-  
+
       if (!updatedCourse) {
         return sendError(res, 'Course not found or lesson not found', 400);
       }
-  
+
       return res.status(200).json({
         message: 'Content and associated lesson deleted successfully',
         course: updatedCourse,
@@ -224,7 +223,7 @@ class InstructorController {
       return sendError(res, 'Failed to update course', 400);
     }
   }
- 
+
   static async deleteCourse(req, res) {
     const { courseId } = req.params;
 
@@ -310,7 +309,7 @@ class InstructorController {
       return sendError(res, 'Missing instructorId');
     }
 
-    const allCours = await coursesOp.searchCourse({ instructorId });
+    const allCours = await CourseOp.searchCourse({ instructorId });
     if (!allCours) {
       return sendError(res, 'Cannot retrive courses', 404);
     }
