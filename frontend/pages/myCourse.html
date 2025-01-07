@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Courses - Learnify</title>
-  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/myCourse.css">
 </head>
 <body>
   <header>
@@ -21,7 +21,7 @@
     <p>Manage your courses here.</p>
 
     <!-- Create Course Box -->
-    <div id="create-course-box">
+    <div id="create-course-box" class="card">
       <h2>Create a New Course</h2>
       <form id="create-course-form">
         <input type="text" id="course-title" placeholder="Course Title" required>
@@ -33,25 +33,10 @@
     </div>
 
     <!-- Courses List -->
-    <div id="courses-list">
+    <div id="courses-list" class="card">
       <p>Loading courses...</p>
     </div>
 
-    <!-- Add Content Modal -->
-    <div id="add-content-modal" class="modal">
-      <div class="modal-content">
-        <span class="close-btn" onclick="closeModal()">&times;</span>
-        <h2>Add Content to Course</h2>
-        <form id="add-content-form">
-          <input type="text" id="content-path" placeholder="Content Path" required>
-          <select id="content-type">
-            <option value="video">Video</option>
-            <option value="article">Article</option>
-          </select>
-          <button type="submit">Submit</button>
-        </form>
-      </div>
-    </div>
 
   </main>
 

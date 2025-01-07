@@ -8,26 +8,29 @@
 </head>
 <body>
   <header>
-    <h1>Dashboard</h1>
+    <h2>Dashboard</h2>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="./dashboard.html">Account</a>
+    </nav>
   </header>
   <main>
     <p>Welcome to your dashboard! Here you can manage your courses and progress.</p>
 
-    <!-- User Info Box -->
     <div class="user-info-box">
       <h2>Welcome, <span id="user-name">Loading...</span></h2>
       <p>Email: <span id="user-email">Loading...</span></p>
       <p>Role: <span id="user-role">Loading...</span></p>
     </div>
 
-    <nav>
-      <a id="course-link" href="#">Loading...</a> <!-- This link will be updated based on the user's role -->
-    </nav>
+    <div class="button-container">
+      <a id="course-link" href="#">Courses</a>
+      <button id="logout-btn">Logout</button>
+    </div>
   </main>
   <footer>
     <p>&copy; 2025 Learnify. All rights reserved.</p>
   </footer>
   <script src="../js/dashboard.js"></script>
-  <script src="../js/header.js"></script>
 </body>
 </html>

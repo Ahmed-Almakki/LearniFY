@@ -1,168 +1,145 @@
-/* Header Styling */
-header {
-    background-color: blue;
-    color: white;
-    padding: 10px 0;
-    text-align: center;
-    font-size: 24px;
-    position: relative;
-    display: flex; /* Enable flexbox */
-    justify-content: space-between; /* Space between the paragraph and links */
-    padding-left: 20px;
-    padding-right: 20px;
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-/* Navigation Bar Styling */
+/* Header styles */
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
 header nav {
     display: flex;
     gap: 20px;
 }
 
-header nav ul {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-}
-
-header nav ul li {
-    display: inline;
-}
-
-header nav ul li a {
+header nav a {
     color: white;
     text-decoration: none;
-    font-size: 18px;
-    padding: 10px;
     font-weight: bold;
 }
 
-header nav ul li a:hover {
+header nav a:hover {
     text-decoration: underline;
 }
 
-/* Footer Styling */
+/* Footer styles */
 footer {
-    background-color: blue;
+    background-color: #007bff;
     color: white;
+    padding: 10px 20px;
     text-align: center;
-    padding: 20px 0;
     margin-top: auto;
+    position: relative;
 }
 
-
-
-/* Search Bar Styling */
-.search-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px; /* Add spacing between the input and button */
-    margin-top: 10px; /* Reduced space at the top */
-    margin-bottom: 30px;
-    padding: 0 20px; /* Padding for the container */
-}
-
-
-/* Style for the search input */
-#course-search {
-    padding: 10px;
-    font-size: 16px;
-    width: 300px; /* Width of the search bar */
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-/* Style for the search button */
-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    background-color: blue; /* Blue background for the button */
-    color: white; /* White text */
-    font-weight: bold;
-}
-
-button:hover {
-    background-color: darkblue; /* Darker blue on hover */
-}
-
-html, body {
-    height: 100%; /* Ensure the body takes the full height of the viewport */
-    margin: 0; /* Remove default margin */
-    display: flex;
-    flex-direction: column; /* Stack header, main, and footer vertically */
-}
-
-/* Footer Styling */
-footer {
-    background-color: blue; /* Blue background for the footer */
-    color: white; /* White text color for contrast */
-    padding: 20px 0; /* Vertical padding */
-    text-align: center; /* Center the text */
-    font-size: 14px; /* Font size for the footer text */
-    margin-top: auto; /* Push the footer to the bottom of the page */
-}
-
-footer p {
-    margin: 0; /* Remove default margin for paragraph */
-}
-
-/* Styling for Course Cards */
-.course-item {
-    background-color: #f9f9f9; /* Light background for the card */
-    border: 1px solid #ddd; /* Light border around the card */
-    border-radius: 8px; /* Rounded corners */
-    padding: 20px; /* Inner spacing */
-    margin-bottom: 20px; /* Space between cards */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    transition: transform 0.3s, box-shadow 0.3s; /* Smooth hover effect */
-}
-
-.course-item:hover {
-    transform: translateY(-5px); /* Slight lift on hover */
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* More pronounced shadow */
-}
-
-/* Title Styling */
-.course-item h2 {
-    font-size: 24px;
-    color: #333; /* Darker text for contrast */
-    margin-bottom: 10px;
-}
-
-/* Instructor, Description, and Details Styling */
-.course-item p {
-    font-size: 16px;
-    color: #555; /* Medium text color */
-    margin: 5px 0; /* Add some spacing between paragraphs */
-}
-
-/* Enroll/Resume Button Styling */
-.course-item button {
-    background-color: blue; /* Match theme color */
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
-    cursor: pointer;
-    margin-top: 10px; /* Add space above the button */
-    transition: background-color 0.3s; /* Smooth color transition on hover */
-}
-
-.course-item button:hover {
-    background-color: darkblue; /* Darker blue on hover */
-}
-
-/* Main content area */
+/* Main content styles */
 main {
-    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 60px; /* Space below the header for the search bar */
+    justify-content: center;
+    padding-top: 100px; /* Offset for the fixed header */
+    padding-bottom: 50px; /* Offset for the footer */
+    flex-grow: 1;
+}
+
+/* Search container styles */
+.search-container {
+    margin: 20px 0;
+    text-align: center;
+}
+
+#course-search {
+    padding: 10px;
+    width: 300px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+}
+
+#search-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+#search-button:hover {
+    background-color: #0056b3;
+}
+
+/* Search results container */
+#course-results {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    justify-content: center; /* Center the grid horizontally */
+    width: 90%;
+    max-width: 1200px;
+    margin-top: 20px;
+}
+
+/* Individual course card */
+.course-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.course-item h2 {
+    margin: 10px 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.course-item p {
+    font-size: 14px;
+    color: #555;
+}
+
+.enroll-button,
+.resume-button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    font-size: 14px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.enroll-button:hover,
+.resume-button:hover {
+    background-color: #0056b3;
 }

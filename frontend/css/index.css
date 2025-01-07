@@ -1,0 +1,89 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Ensure the body takes full height */
+  }
+  
+  /* Header Styling */
+  header {
+    background-color: #0073e6;
+    color: white;
+    padding: 30px 20px; /* Increased padding for a larger header */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Push the header text down */
+  }
+  
+  header h1 {
+    margin: 0;
+    font-size: 36px; /* Increased font size for the header */
+  }
+  
+  nav {
+    display: flex;
+    gap: 20px;
+  }
+  
+  nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px; /* Increased font size for navigation links */
+  }
+  
+  nav a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Main Section Styling */
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex: 1; /* Take up available space */
+    padding: 20px;
+  }
+  
+  .welcome-container p {
+    font-size: 22px; /* Increased font size for the welcome message */
+    margin-bottom: 20px;
+  }
+  
+  button {
+    background-color: #0073e6;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px; /* Increased font size for the button */
+  }
+  
+  button:hover {
+    background-color: #005bb5;
+  }
+  
+  /* Footer Styling */
+  footer {
+    background-color: #0073e6;
+    color: white;
+    padding: 30px 20px; /* Increased padding for a larger footer */
+    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Push the footer text up */
+  }
+  
+  footer p {
+    margin: 0;
+    font-size: 18px; /* Increased font size for footer text */
+  }
+  
