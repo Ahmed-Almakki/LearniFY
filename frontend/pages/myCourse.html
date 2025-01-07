@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Courses - Learnify</title>
+  <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+  <header>
+    <h1>My Courses</h1>
+    <!-- Navigation Bar -->
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="login.html">Account</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <p>Manage your courses here.</p>
+
+    <!-- Create Course Box -->
+    <div id="create-course-box">
+      <h2>Create a New Course</h2>
+      <form id="create-course-form">
+        <input type="text" id="course-title" placeholder="Course Title" required>
+        <input type="text" id="course-category" placeholder="Category" required>
+        <input type="text" id="course-difficulty" placeholder="Difficulty" required>
+        <textarea id="course-description" placeholder="Description" required></textarea>
+        <button type="submit">Create Course</button>
+      </form>
+    </div>
+
+    <!-- Courses List -->
+    <div id="courses-list">
+      <p>Loading courses...</p>
+    </div>
+
+    <!-- Add Content Modal -->
+    <div id="add-content-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <h2>Add Content to Course</h2>
+        <form id="add-content-form">
+          <input type="text" id="content-path" placeholder="Content Path" required>
+          <select id="content-type">
+            <option value="video">Video</option>
+            <option value="article">Article</option>
+          </select>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Learnify. All rights reserved.</p>
+  </footer>
+
+  <script src="../js/myCourse.js"></script> <!-- Link to the JavaScript file -->
+</body>
+</html>

@@ -1,4 +1,3 @@
-// Extract courseId from query parameters
 const urlParams = new URLSearchParams(window.location.search);
 const courseId = urlParams.get('courseId');
 
@@ -9,7 +8,7 @@ if (courseId) {
 }
 
 async function fetchCourseContent(courseId) {
-    const token = localStorage.getItem('token'); // Retrieve the token from localStorage
+    const token = localStorage.getItem('token');
 
     if (!token) {
         alert('You need to be logged in to access the course content.');
@@ -19,7 +18,7 @@ async function fetchCourseContent(courseId) {
         const response = await fetch(`http://localhost:3000/api/student/course/content/${courseId}`, {
             method: 'GET',
             headers: {
-                'Authorization': `Bearer ${token}`  // Include the token in the Authorization header
+                'Authorization': `Bearer ${token}`
             }
         });
         const result = await response.json();
@@ -46,17 +45,14 @@ function displayCourseContent(contents) {
             const contentItem = document.createElement('div');
             contentItem.classList.add('content-item');
 
-            // Title
             const title = document.createElement('h3');
-            title.textContent = content.title; // Assuming 'title' exists in the content object
+            title.textContent = content.title; 
             contentItem.appendChild(title);
 
-            // Path
             const path = document.createElement('p');
             path.textContent = `Path: ${content.pathToLecture}`;
             contentItem.appendChild(path);
 
-            // Type
             const type = document.createElement('p');
             type.textContent = `Content Type: ${content.type}`;
             contentItem.appendChild(type);
