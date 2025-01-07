@@ -32,54 +32,136 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-// Function to display the search results
-function displayCourses(courses) {
+async function displayCourses(courses) {
     const courseList = document.getElementById('course-results');
-    courseList.innerHTML = ''; // Clear previous results
+    courseList.innerHTML = '';
 
     if (courses.length === 0) {
         courseList.innerHTML = '<p>No courses found.</p>';
     } else {
-        courses.forEach(course => {
+        for (let course of courses) {
             const courseItem = document.createElement('div');
             courseItem.classList.add('course-item');
 
-            // Create elements to display course information
             const titleElement = document.createElement('h2');
-            titleElement.textContent = course.title; // Course Title
+            titleElement.textContent = course.title;
 
             const instructorElement = document.createElement('p');
-            instructorElement.textContent = `Instructor: ${course.instructorName}`; // Instructor Name
+            instructorElement.textContent = `Instructor: ${course.instructorName}`;
 
             const descriptionElement = document.createElement('p');
-            descriptionElement.textContent = `Description: ${course.description}`; // Course Description
+            descriptionElement.textContent = `Description: ${course.description}`;
 
             const categoryElement = document.createElement('p');
-            categoryElement.textContent = `Category: ${course.category}`; // Category of the course
+            categoryElement.textContent = `Category: ${course.category}`;
 
             const difficultyElement = document.createElement('p');
-            difficultyElement.textContent = `Difficulty: ${course.difficulty}`; // Difficulty of the course
+            difficultyElement.textContent = `Difficulty: ${course.difficulty}`;
 
-            // Create a button
             const enrollButton = document.createElement('button');
-            enrollButton.textContent = 'Enroll Now'; // Button text
-            enrollButton.classList.add('enroll-button'); // Add a class for styling
-            enrollButton.addEventListener('click', () => {
-                alert(`You clicked enroll for course: ${course.title}`);
-                // Add functionality here for enrolling in the course
-            });
+            enrollButton.setAttribute('data-course-id', course._id);
+            enrollButton.classList.add('enroll-button');
 
-            // Append all elements to the course item
+            const enrolled = await checkEnrollment(course._id);
+
+            if (enrolled) {
+                enrollButton.textContent = 'Resume';
+                enrollButton.classList.replace('enroll-button', 'resume-button');
+                enrollButton.addEventListener('click', () => {
+                    alert(`Resuming course: ${course.title}`);
+                    window.location.href = `/course/content/${course._id}`;  // Redirect to the course content page
+                });
+            } else {
+                enrollButton.textContent = 'Enroll Now';
+                enrollButton.addEventListener('click', async () => {
+                    try {
+                        const success = await enroll(course._id, course.title);
+                        if (success) {
+                            enrollButton.textContent = 'Resume';
+                            enrollButton.classList.replace('enroll-button', 'resume-button');
+                            enrollButton.removeEventListener('click', arguments.callee);
+                            enrollButton.addEventListener('click', () => {
+                                alert(`Resuming course: ${course.title}`);
+                                window.location.href = `/course/content/${course._id}`;  // Redirect to the course content page
+                            });
+                        } else {
+                            alert('Failed to enroll in course. Try again!');
+                        }
+                    } catch (error) {
+                        console.error('Error handling enrollment:', error);
+                        alert('An error occurred during enrollment.');
+                    }
+                });
+            }
+
             courseItem.appendChild(titleElement);
             courseItem.appendChild(instructorElement);
             courseItem.appendChild(descriptionElement);
             courseItem.appendChild(categoryElement);
             courseItem.appendChild(difficultyElement);
-            courseItem.appendChild(enrollButton); // Add the button to the card
+            courseItem.appendChild(enrollButton);
 
-            // Append the course item to the course list
             courseList.appendChild(courseItem);
+        }
+    }
+}
+
+// Function to check if the user is already enrolled in a course
+async function checkEnrollment(courseId) {
+    const isEnrolled = localStorage.getItem(`enrolled_${courseId}`);
+
+    if (isEnrolled) {
+        return true; // Return true if the user is already enrolled
+    }
+    try {
+        const response = await fetch(`http://localhost:3000/api/student/enrollment-status/${courseId}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
         });
+
+        const result = await response.json();
+
+        if (response.status === 200) {
+            return result.isEnrolled; // Assume the result returns a field like `isEnrolled`
+        } else {
+            alert(result.message || 'Failed to check enrollment status');
+            return false;
+        }
+    } catch (error) {
+        console.error('Error checking enrollment status:', error);
+        alert('An error occurred while checking enrollment status');
+        return false;
+    }
+}
+
+// Function to handle enrollment
+async function enroll(courseId, courseTitle) {
+    try {
+        const response = await fetch('http://localhost:3000/api/student/enroll', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify({ courseId })
+        });
+
+        const result = await response.json();
+
+        if (response.status === 200) {
+            localStorage.setItem(`enrolled_${courseId}`, true);
+            alert(`Successfully enrolled in course: ${courseTitle}`);
+            return true;
+        } else {
+            alert(result.message || 'Failed to enroll in the course');
+            return false;
+        }
+    } catch (error) {
+        console.error('Error enrolling in course:', error);
+        alert('An error occurred while enrolling in the course.');
+        return false;
     }
 }
 
