@@ -14,12 +14,9 @@ async function searchCourse(options = {}) {
   // search or find a function on any parameter/s you want
   try {
     const result = await Courses.find(options);
-    if (result.length === 0) {
-      return null;
-    }
     return result;
   } catch (error) {
-    console.log('error is : ', error);
+    console.log('error is sdfsdfs: ', error);
     return null;
   }
 }

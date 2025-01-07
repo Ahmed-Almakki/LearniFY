@@ -5,30 +5,21 @@ const Contents = new mongoose.Schema({
   pathToLecture: { type: String, required: true },
   type: {
     type: String,
-    enum: ['text', 'video', 'pdf', 'image'],
+    enum: ['Article', 'video'],
     required: true,
   },
 });
 
 const Course = new mongoose.Schema({
   title: { type: String, required: true },
-  instructorName: { type: String, required: true },
   description: { type: String, required: true },
   category: { type: String, required: true },
-  image: { type: String, required: true},
   difficulty: {
     type: String,
     enum: ['easy', 'meduim', 'hard'],
     required: true,
   },
   instructorId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-  lessons: [
-    {
-      lessonTitle: String,
-      content: [Contents],
-      resources: [String],
-    },
-  ],
 },
 { timestamps: true },
 { versionKey: false });

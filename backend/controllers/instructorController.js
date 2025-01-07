@@ -5,6 +5,7 @@ import Enrollment from '../utils/enrollmetnOp.js';
 import { sendError } from '../utils/helper.js';
 import prog from '../utils/progressOp.js';
 import gradOp from '../utils/gradOp.js';
+import coursesOp from '../utils/coursesOp.js';
 
 class InstructorController {
   static async PostContent(req, res) {
@@ -12,8 +13,6 @@ class InstructorController {
     {
       "path": "https://drive.google.com/file/d/1yjBajX3-TId3tDAgVNR6qDYIHLiHRGfI/view?usp=drive_link",
       "type": "video",
-      "lessonTitle": "first lesson",
-      "resources": ["https://first_resource1", "https://second_resource2"]
     }
     */
     const { courseId } = req.params;
@@ -159,47 +158,33 @@ class InstructorController {
     }
   }
 
-  /*
-  * Create a new course.
-  * @param {Request} req - The request object containing instructorId,courseName,and description.
-  * @param {Response} res - The response object to return the result.
-  */
   static async createCourse(req, res) {
     const {
       title,
-      instructorName,
       category,
       difficulty,
       description,
     } = req.body;
-    const image = req.file.path;
-    console.log('image', image);
+    const instructorId = req.user.id;
 
     if (!title) {
       return sendError(res, 'Missing title!');
     }
 
-    const { instructorId } = req.params;
     if (!instructorId) {
       return sendError(res, 'Missing instructorId');
     }
-    // console.log('difficulty', difficulty, 'category', category);
-    // console.log('insturutoreId', instructorId, 'title', title);
-    // console.log('image', image, 'description', description);
-    
 
     const newCourse = await CourseOp.createCourse({
       instructorId,
-      instructorName,
       title,
       category,
       difficulty,
       description,
-      image: image,
       lessons: [],
     });
 
-    return res.status(201).json({
+    return res.status(200).json({
       success: true,
       message: 'Course created successfully',
       course: newCourse,
@@ -208,11 +193,6 @@ class InstructorController {
     // const content = await contents.createContent()
   }
 
-  /*
-   * Update an existing course.
-   * @param {Request} req - The request object containing courseId and updated fields.
-   * @param {Response} res - The response object to return the result.
-   */
   static async updateCourse(req, res) {
     /*
     json
@@ -244,12 +224,7 @@ class InstructorController {
       return sendError(res, 'Failed to update course', 400);
     }
   }
-
-  /*
-   * Delete a course.
-   * @param {Request} req - The request object containing courseId.
-   * @param {Response} res - The response object to confirm deletion.
-   */
+ 
   static async deleteCourse(req, res) {
     const { courseId } = req.params;
 
@@ -258,25 +233,18 @@ class InstructorController {
       return sendError(res, 'Missing courseId!');
     }
 
-    try {
-      const deletedCourse = await CourseOp.delCourse(courseId);
-      if (!deletedCourse) return sendError(res, 'Course not found!', 404);
-      await gradOp.delGrad(courseId);
-      return res.json({
-        success: true,
-        message: `Course with ID ${courseId} has been deleted.`,
-      });
-    } catch (error) {
-      return sendError(res, 'Failed to delete course', error);
-    }
+    const deletedCourse = await CourseOp.delCourse(courseId);
+
+    if (!deletedCourse) return sendError(res, 'Course not found!', 404);
+
+    await gradOp.delGrad(courseId);
+
+    return res.json({
+      success: true,
+      message: `Course with ID ${courseId} has been deleted.`,
+    });
   }
 
-  /*
-   * View all students enrolled in a course.
-   * (Assumes you have an Enrollment model linking courses and students.)
-   * @param {Request} req - The request object containing courseId.
-   * @param {Response} res - The response object returning the list of students.
-   */
   static async viewEnrolledStudents(req, res) {
     const { courseId } = req.params;
 
@@ -333,6 +301,21 @@ class InstructorController {
     return res.json({
       sucess: true,
       AllCourse: AllCourses,
+    });
+  }
+
+  static async retriveCourses(req, res) {
+    const instructorId = req.user.id;
+    if (!instructorId) {
+      return sendError(res, 'Missing instructorId');
+    }
+
+    const allCours = await coursesOp.searchCourse({ instructorId });
+    if (!allCours) {
+      return sendError(res, 'Cannot retrive courses', 404);
+    }
+    return res.status(200).json({
+      Course: allCours,
     });
   }
 }
