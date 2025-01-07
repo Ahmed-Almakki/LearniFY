@@ -1,4 +1,4 @@
-# LearniFY - Backend
+# LearniFY - Backend Development
 Learnify is a backend project designed to power a learning platform where users can access courses, track their progress, and more. It allows course enrollment, content management, and integrates authentication for students and instructors.
 ## Table of Contents
 * Project Overview
