@@ -38,18 +38,22 @@ class StudentController {
 
   // Get enrolled courses
   static async getEnrolledCourses(req, res) {
-    const { courseId } = req.params;
+    const { userId } = req.params;
+    console.log('usser', req.user);
 
     try {
-      console.log('Finding student with userId:', courseId);
-      const enrooled = await coursesOp.searchCourse({ courseId });
+      console.log('Finding student with userId:', userId);
+      const enrooled = await Enrollment.retriveAndPopulate({ userId: req.user.id });
       console.log('Student found:', enrooled);
 
       if (!enrooled) {
         return sendError(res, 'Student profile not found!');
       }
 
-      return res.json(courseId);
+      return res.status(200).json({
+        success: "suucssfuly",
+        enrolledCourses: enrooled,
+    });
     } catch (err) {
       console.error('Error occurred:', err);
       return sendError(res, 'An error occurred while fetching courses.', 500);
@@ -97,6 +101,24 @@ class StudentController {
       sucess: true,
       allCourses: courses,
     });
+  }
+
+  static async searchCourse(req, res) {
+    const query = req.params.query;
+    if (!query) {
+      return sendError(res, 'Missing query');
+    }
+    console.log('asfsf', query);
+    try {
+      const searchcourse = await coursesOp.searchCourse({title: { $regex: query, $options: 'i'}});
+      if (!searchcourse) {
+        return sendError(res, 'Cannot find course', 404);
+      }
+      console.log('aasfsfsfsfsfsf', query);
+      return res.status(200).json(searchcourse);
+    } catch (error) {
+      return res.status(500).json({ error: 'Failed to search for courses.' });
+    }
   }
 }
 

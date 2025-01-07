@@ -14,10 +14,13 @@ router.use(requireRole('student'));
 router.post('/enroll', StudentController.enrollCourse);
 
 // Get all enrolled courses
-router.get('/:userId/courses', StudentController.getEnrolledCourses);
+router.get('/courses', StudentController.getEnrolledCourses);
 
 // Update course progress
 router.post('/sumbit-quize', ProgressController.PostProg);
+
+// search for course
+router.get('/search/:query', StudentController.searchCourse);
 
 // view all courses "for dashboard"
 router.get('/:userId/dashboard', StudentController.viewAllCourse);
