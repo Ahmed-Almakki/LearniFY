@@ -68,8 +68,7 @@ async function displayCourses(courses) {
                 enrollButton.textContent = 'Resume';
                 enrollButton.classList.replace('enroll-button', 'resume-button');
                 enrollButton.addEventListener('click', () => {
-                    alert(`Resuming course: ${course.title}`);
-                    window.location.href = `/course/content/${course._id}`;  // Redirect to the course content page
+                    window.location.href = `/course/content/${course._id}`;  // Redirect to the course content page if resume
                 });
             } else {
                 enrollButton.textContent = 'Enroll Now';
@@ -77,13 +76,7 @@ async function displayCourses(courses) {
                     try {
                         const success = await enroll(course._id, course.title);
                         if (success) {
-                            enrollButton.textContent = 'Resume';
-                            enrollButton.classList.replace('enroll-button', 'resume-button');
-                            enrollButton.removeEventListener('click', arguments.callee);
-                            enrollButton.addEventListener('click', () => {
-                                alert(`Resuming course: ${course.title}`);
-                                window.location.href = `/course/content/${course._id}`;  // Redirect to the course content page
-                            });
+                            window.location.href = `/course/content/${course._id}`;  // Redirect to the course content page if enroll
                         } else {
                             alert('Failed to enroll in course. Try again!');
                         }
@@ -106,25 +99,26 @@ async function displayCourses(courses) {
     }
 }
 
+
 // Function to check if the user is already enrolled in a course
 async function checkEnrollment(courseId) {
     const isEnrolled = localStorage.getItem(`enrolled_${courseId}`);
 
     if (isEnrolled) {
-        return true; // Return true if the user is already enrolled
+        return true;
     }
     try {
         const response = await fetch(`http://localhost:3000/api/student/enrollment-status/${courseId}`, {
             method: 'GET',
             headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
+                'Authorization': `Bearer ${localStorage.getItem('token')}` 
             }
         });
 
         const result = await response.json();
 
         if (response.status === 200) {
-            return result.isEnrolled; // Assume the result returns a field like `isEnrolled`
+            return result.isEnrolled;
         } else {
             alert(result.message || 'Failed to check enrollment status');
             return false;
@@ -152,7 +146,6 @@ async function enroll(courseId, courseTitle) {
 
         if (response.status === 200) {
             localStorage.setItem(`enrolled_${courseId}`, true);
-            alert(`Successfully enrolled in course: ${courseTitle}`);
             return true;
         } else {
             alert(result.message || 'Failed to enroll in the course');
@@ -164,4 +157,3 @@ async function enroll(courseId, courseTitle) {
         return false;
     }
 }
-
