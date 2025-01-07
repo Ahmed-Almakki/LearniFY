@@ -2,7 +2,7 @@ import mongoose, { Schema } from 'mongoose';
 
 const Contents = new mongoose.Schema({
   courseId: { type: Schema.Types.ObjectId, ref: 'Course', required: true },
-  path: { type: String, required: true },
+  pathToLecture: { type: String, required: true },
   type: {
     type: String,
     enum: ['text', 'video', 'pdf', 'image'],

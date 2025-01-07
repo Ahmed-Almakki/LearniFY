@@ -1,116 +1,168 @@
-/* Set the background color of the header to blue */
+/* Header Styling */
 header {
     background-color: blue;
-    color: white; /* Set text color to white for contrast */
-    padding: 20px 0; /* Increase padding to make the header larger */
-    text-align: center; /* Center the text horizontally */
-    font-size: 36px; /* Make the text larger */
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 24px;
+    position: relative;
+    display: flex; /* Enable flexbox */
+    justify-content: space-between; /* Space between the paragraph and links */
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
-/* Ensure the body takes up at least the full height of the viewport */
-html, body {
-    height: 100%; /* Make sure body takes full height */
-    margin: 0; /* Remove default margin */
+/* Navigation Bar Styling */
+header nav {
     display: flex;
-    flex-direction: column; /* Arrange header, main content, and footer vertically */
+    gap: 20px;
 }
 
-/* Main content */
-main {
-    flex: 1; /* This allows the main content to expand and take up available space */
+header nav ul {
+    list-style: none;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+    margin: 0;
+    padding: 0;
 }
 
-/* Style the search bar container */
+header nav ul li {
+    display: inline;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px;
+    font-weight: bold;
+}
+
+header nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Footer Styling */
+footer {
+    background-color: blue;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: auto;
+}
+
+
+
+/* Search Bar Styling */
 .search-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 80px;
-    gap: 10px;
+    gap: 10px; /* Add spacing between the input and button */
+    margin-top: 10px; /* Reduced space at the top */
+    margin-bottom: 30px;
+    padding: 0 20px; /* Padding for the container */
 }
 
+
+/* Style for the search input */
 #course-search {
     padding: 10px;
     font-size: 16px;
-    width: 300px;
+    width: 300px; /* Width of the search bar */
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
+/* Style for the search button */
 button {
-    padding: 10px 15px;
+    padding: 10px 20px;
     font-size: 16px;
-    border: 1px solid #ccc;
+    border: none;
     border-radius: 4px;
     cursor: pointer;
+    background-color: blue; /* Blue background for the button */
+    color: white; /* White text */
+    font-weight: bold;
 }
 
 button:hover {
-    background-color: #f0f0f0;
+    background-color: darkblue; /* Darker blue on hover */
 }
 
-/* Style for course results (you can customize further) */
-#course-results {
+html, body {
+    height: 100%; /* Ensure the body takes the full height of the viewport */
+    margin: 0; /* Remove default margin */
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-top: 20px;
-  }
-  
-  .course-item {
-    border: 1px solid #ddd;
-    padding: 20px;
-    width: 300px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .course-item img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-  }
-  
-  .course-item h2 {
-    font-size: 1.5rem;
-    margin: 10px 0;
-  }
-  
-  .course-item p {
-    font-size: 1rem;
-    margin: 5px 0;
-  }
-
-  .enroll-button {
-    display: block;
-    margin-top: 10px;
-    padding: 10px 15px;
-    font-size: 16px;
-    background-color: blue;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-align: center;
+    flex-direction: column; /* Stack header, main, and footer vertically */
 }
 
-.enroll-button:hover {
-    background-color: darkblue;
-}
-
-/* Footer Styles */
+/* Footer Styling */
 footer {
-    background-color: blue;
-    color: white; /* Text color */
+    background-color: blue; /* Blue background for the footer */
+    color: white; /* White text color for contrast */
     padding: 20px 0; /* Vertical padding */
     text-align: center; /* Center the text */
-    font-size: 14px; /* Font size */
+    font-size: 14px; /* Font size for the footer text */
+    margin-top: auto; /* Push the footer to the bottom of the page */
 }
 
 footer p {
-    margin: 5px 0; /* Space between the lines */
+    margin: 0; /* Remove default margin for paragraph */
+}
+
+/* Styling for Course Cards */
+.course-item {
+    background-color: #f9f9f9; /* Light background for the card */
+    border: 1px solid #ddd; /* Light border around the card */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px; /* Inner spacing */
+    margin-bottom: 20px; /* Space between cards */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth hover effect */
+}
+
+.course-item:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* More pronounced shadow */
+}
+
+/* Title Styling */
+.course-item h2 {
+    font-size: 24px;
+    color: #333; /* Darker text for contrast */
+    margin-bottom: 10px;
+}
+
+/* Instructor, Description, and Details Styling */
+.course-item p {
+    font-size: 16px;
+    color: #555; /* Medium text color */
+    margin: 5px 0; /* Add some spacing between paragraphs */
+}
+
+/* Enroll/Resume Button Styling */
+.course-item button {
+    background-color: blue; /* Match theme color */
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px; /* Add space above the button */
+    transition: background-color 0.3s; /* Smooth color transition on hover */
+}
+
+.course-item button:hover {
+    background-color: darkblue; /* Darker blue on hover */
+}
+
+/* Main content area */
+main {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 60px; /* Space below the header for the search bar */
 }

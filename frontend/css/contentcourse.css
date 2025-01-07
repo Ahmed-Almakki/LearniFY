@@ -1,0 +1,119 @@
+/* Header Styling */
+header {
+    background-color: blue;
+    color: white;
+    padding: 20px 0;
+    display: flex; /* Enable flexbox for the header */
+    justify-content: space-between; /* Distribute space between content */
+    align-items: center; /* Vertically align items */
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* Header paragraph */
+header p {
+    margin-right:0cap; /* Push the paragraph to the left */
+}
+
+/* Navigation Bar Styling */
+header nav {
+    display: flex;
+    gap: 20px;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+header nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Footer Styling */
+footer {
+    background-color: blue;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+
+/* Main Content Styling */
+main {
+    padding: 20px;
+    margin-bottom: 60px; /* To prevent content overlap with the footer */
+}
+
+/* Course Content Container */
+#course-content {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Content Item Styling (Card) */
+.content-item {
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    width: 300px;
+    background-color: #f9f9f9;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Title Styling */
+.content-item h3 {
+    color: blue;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    text-transform: uppercase;
+}
+
+/* Path and Type Styling */
+.content-item p {
+    margin: 0;
+    font-size: 1em;
+    color: #333;
+}
+
+/* Home and Account Links */
+.home-account-links {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.home-account-links a {
+    color: blue;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+.home-account-links a:hover {
+    text-decoration: underline;
+}

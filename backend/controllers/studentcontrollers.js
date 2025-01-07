@@ -7,29 +7,26 @@ import { sendError } from '../utils/helper.js';
 class StudentController {
   // Enroll in a course
   static async enrollCourse(req, res) {
-    const { userId, courseId } = req.body;
+    const { courseId } = req.body;
+    if (!courseId) {
+      return sendError(res, 'Missing courseId')
+    }
+    const userId = req.user.id;
+    if (!userId) {
+      return sendError(res, 'Un-authrized user', 400);
+    }
 
     try {
-      const student = await Student.retriveUser({ _id: userId });
+      const student = await Enrollment.retriveAllEnrollment({ userId, courseId });
       if (!student) {
-        return sendError(res, 'Student profile not found!');
+        return sendError(res, 'You are already enrolled', 400);
       }
+      await Enrollment.createEnrollment({
+        userId,
+        courseId,
+      });
 
-      const enroled = await Enrollment.createEnrollment({ userId, courseId });
-      if (!enroled) {
-        return sendError(res, 'enrolled creating failed', 500);
-      }
-
-      const content = await coursesOp.retriveContent({ userId, courseId });
-      if (!content) {
-        return sendError(res, 'Cannot retrive content', 404);
-      }
-
-      return res.json({
-        success: true,
-        message: 'Successfully enrolled in the course!',
-        content,
-       });
+      return res.status(200).json({ message: 'Successfully enrolled in the course' });
     } catch (err) {
       console.error(err);
       return sendError(res, 'An error occurred while enrolling.', 500);
@@ -60,30 +57,6 @@ class StudentController {
     }
   }
 
-  // Update course progress
-  static async updateProgress(req, res) {
-    const { userId, courseId } = req.body;
-
-    try {
-      const student = await Student.retriveUser({ userId, courseId });
-      if (!student) {
-        return sendError(res, 'Student profile not found!', 404);
-      }
-
-      const ResProg = await prog.retriveProgress({ courseId, studentId: userId });
-      if (!ResProg) {
-        return sendError(res, 'Missing Progress', 404);
-      }
-
-      await Enrollment.updateEnrollment({ userId, courseId }, { progress: ResProg[0].progress });
-
-      return res.json({ success: true, message: 'Progress updated successfully!' });
-    } catch (err) {
-      console.error(err);
-      return sendError(res, 'An error occurred while updating progress.', 500);
-    }
-  }
-
   static async viewAllCourse(req, res) {
     const { userId } = req.params;
 
@@ -103,6 +76,7 @@ class StudentController {
     });
   }
 
+
   static async searchCourse(req, res) {
     const query = req.params.query;
     if (!query) {
@@ -119,6 +93,42 @@ class StudentController {
     } catch (error) {
       return res.status(500).json({ error: 'Failed to search for courses.' });
     }
+  }
+
+  static async checkEnrollment(req, res) {
+    try {
+        const userId = req.user.id; 
+        const courseId = req.params.courseId;
+        if (!userId || !courseId) {
+          return sendError(res, 'Missing either userId or coursedId');
+        }
+
+        console.log('userId', userId)
+        const user = await Enrollment.retriveAllEnrollment({ userId, courseId });
+
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        res.status(200).json({ user });
+    } catch (error) {
+        console.error('Error checking enrollment status:', error);
+        res.status(500).json({ message: 'Failed to check enrollment status' });
+    }
+  }
+
+  static async GetContent(req, res) {
+    const { courseId } = req.params;
+    if (!courseId) {
+      return sendError(res, 'Missing coursId')
+    }
+    const cont = await coursesOp.retriveContent({ courseId });
+    if (!cont) {
+      return sendError(res, 'Cannot retrive', 404);
+    }
+    return res.status(200).json({
+      contents: cont,
+    });
   }
 }
 

@@ -68,7 +68,7 @@ async function displayCourses(courses) {
                 enrollButton.textContent = 'Resume';
                 enrollButton.classList.replace('enroll-button', 'resume-button');
                 enrollButton.addEventListener('click', () => {
-                    window.location.href = `/course/content/${course._id}`;  // Redirect to the course content page if resume
+                    window.location.href = `/frontend/pages/contentcourse.html?courseId=${course._id}`;  // Redirect to the course content page if resume
                 });
             } else {
                 enrollButton.textContent = 'Enroll Now';
@@ -76,7 +76,7 @@ async function displayCourses(courses) {
                     try {
                         const success = await enroll(course._id, course.title);
                         if (success) {
-                            window.location.href = `/course/content/${course._id}`;  // Redirect to the course content page if enroll
+                            window.location.href = `/frontend/pages/contentcourse.html?courseId=${course._id}`;  // Redirect to the course content page if enroll
                         } else {
                             alert('Failed to enroll in course. Try again!');
                         }

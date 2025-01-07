@@ -22,35 +22,23 @@ class InstructorController {
     }
 
     const {
-      path,
+      pathToLecture,
       type,
-      lessonTitle,
-      resources,
     } = req.body;
 
-    if (!path || !type || !lessonTitle || !resources) {
+    if (!pathToLecture || !type) {
       return sendError(res, 'Missing either path or type or lessonTitle or resuources');
     }
 
     const creatContent = await CourseOp.createContent({
       courseId,
-      path,
+      pathToLecture,
       type,
     });
 
     if (!creatContent) {
       return sendError(res, 'Cannot create content', 500);
     }
-
-    const newlesson = {
-      lessonTitle,
-      content: [creatContent],
-      resources,
-    };
-
-    await CourseOp.updCourse(courseId, {
-      $push: { lessons: newlesson },
-    });
 
     return res.status(200).json({
       success: true,

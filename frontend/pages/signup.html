@@ -11,7 +11,7 @@
     <h1>Sign Up for Learnify</h1>
   </header>
   <main>
-    <form>
+    <form id="signup-form">
       <label for="name">Full Name:</label>
       <input type="text" id="name" name="name" required>
       <br>
@@ -21,8 +21,16 @@
       <label for="password">Password:</label>
       <input type="password" id="password" name="password" required>
       <br>
+      <label for="role">Role:</label>
+      <select id="role" name="role" required>
+        <option value="student">Student</option>
+        <option value="instructor">Instructor</option>
+      </select>
+      <br>
       <button type="submit">Sign Up</button>
     </form>
   </main>
+
+  <script src="../js/signup.js"></script>
 </body>
 </html>

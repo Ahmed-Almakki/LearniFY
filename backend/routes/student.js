@@ -25,7 +25,10 @@ router.get('/search/:query', StudentController.searchCourse);
 // view all courses "for dashboard"
 router.get('/:userId/dashboard', StudentController.viewAllCourse);
 
+// get specife course
+router.get('/enrollment-status/:courseId', StudentController.checkEnrollment);
+
 // show your progress
-router.get('/course/:studentId/:courseId/progress', ProgressController.GetProg);
+router.get('/course/content/:courseId', StudentController.GetContent);
 
 export default router;

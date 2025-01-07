@@ -1,4 +1,11 @@
-/* Body styling */
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body Styling */
 html, body {
   height: 100%; /* Ensure the body takes the full height of the viewport */
   margin: 0;
@@ -9,20 +16,44 @@ html, body {
   flex-direction: column; /* Stack header, main, and footer vertically */
 }
 
-/* Header styling for the blue background */
+/* Header Styling */
 header {
-  background-color: #007bff; /* Blue background */
-  color: white;              /* White text color */
-  padding: 20px;             /* Padding for the header */
-  text-align: center;        /* Center the text */
+  background-color: #007bff;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  display: flex; /* Enable flexbox for the header */
+  justify-content: space-between; /* Space between the paragraph and links */
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
-header h1 {
+/* Navigation Bar Styling */
+header nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin: 0;
-  font-size: 36px;
+  padding: 0;
 }
 
-/* Main content styling */
+header nav ul li {
+  margin: 0 15px;
+}
+
+header nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+header nav ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Main Content Styling */
 main {
   flex: 1; /* Allow the main section to grow and take available space */
   text-align: center;
@@ -47,7 +78,7 @@ main {
   font-size: 18px;
 }
 
-/* Link styling */
+/* Link Styling */
 nav a {
   text-decoration: none;
   color: #007bff;
