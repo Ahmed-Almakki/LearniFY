@@ -85,6 +85,23 @@ button:hover {
     margin: 5px 0;
   }
 
+  .enroll-button {
+    display: block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    font-size: 16px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.enroll-button:hover {
+    background-color: darkblue;
+}
+
 /* Footer Styles */
 footer {
     background-color: blue;

@@ -60,15 +60,26 @@ function displayCourses(courses) {
             const difficultyElement = document.createElement('p');
             difficultyElement.textContent = `Difficulty: ${course.difficulty}`; // Difficulty of the course
 
+            // Create a button
+            const enrollButton = document.createElement('button');
+            enrollButton.textContent = 'Enroll Now'; // Button text
+            enrollButton.classList.add('enroll-button'); // Add a class for styling
+            enrollButton.addEventListener('click', () => {
+                alert(`You clicked enroll for course: ${course.title}`);
+                // Add functionality here for enrolling in the course
+            });
+
             // Append all elements to the course item
             courseItem.appendChild(titleElement);
             courseItem.appendChild(instructorElement);
             courseItem.appendChild(descriptionElement);
             courseItem.appendChild(categoryElement);
             courseItem.appendChild(difficultyElement);
+            courseItem.appendChild(enrollButton); // Add the button to the card
 
             // Append the course item to the course list
             courseList.appendChild(courseItem);
         });
     }
 }
+
