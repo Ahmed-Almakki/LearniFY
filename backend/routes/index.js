@@ -24,7 +24,4 @@ router.post('/login', validateUserLogin, validate, loginUser);
 // get the information about the logged person
 router.get('/me', authenticate, RertiveUser);
 
-// show all courses in the website
-router.get('/course/all', showAllCourse);
-
 export default router;

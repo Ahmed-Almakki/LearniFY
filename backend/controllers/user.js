@@ -25,7 +25,7 @@ export const createUser = async (req, res) => {
 
     // Check if the email already exists
     const existingUser = await User.retriveUser({ email });
-    if (existingUser) return sendError(res, 'This email already exists!', 404);
+    if (existingUser) return sendError(res, 'This email already exists!', 409);
 
     // Validate role (optional, if role is required)
     const validRoles = ['student', 'instructor']; // Example roles
@@ -71,7 +71,10 @@ export const loginUser = async (req, res) => {
   */
   try {
     const { email, password } = req.body;
-
+    
+    if (!email || !password) {
+      return sendError(res, 'Missing either Email or Password', 401);
+    }
     // Find the user by email
     const user = await User.retriveUser({ email });
     if (!user) return sendError(res, 'Invalid email or password.');
@@ -99,11 +102,16 @@ export const loginUser = async (req, res) => {
 };
 
 export const RertiveUser = async (req, res) => {
-  const user = await User.retriveUserById(req.user.id);
+  const userId = req.user.id;
+  const user = await User.retriveUserById(userId);
   if (!user) {
     return sendError(res, 'Cannot Retrive user', 404);
   }
-  return res.status(200).json({ user });
+  return res.status(200).json({
+    message: "successfully retrived",
+    success: true,
+    user,
+  });
 };
 
 export const showAllCourse = async (req, res) => {
