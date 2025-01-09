@@ -16,7 +16,7 @@ router.put('/course', InstructorController.updateCourse); // Update a course
 router.delete('/course/:courseId', InstructorController.deleteCourse); // Delete a course
 router.get('/:instructorId/course', InstructorController.retriveCourses); // retrive courses
 
-router.post('/:courseId/content', InstructorController.PostContent); // Create a content
+router.post('/content', InstructorController.PostContent); // Create a content
 router.put('/:courseId/content', InstructorController.updateContent); // update a content
 router.delete('/content/:courseId/:contentId', InstructorController.DelContent); // delete a content
 

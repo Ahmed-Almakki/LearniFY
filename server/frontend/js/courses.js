@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
+
   document.getElementById('search-button').addEventListener('click', async () => {
     const searchQuery = document.getElementById('course-search').value;  
     if (!searchQuery) {
@@ -38,8 +39,6 @@ async function displayCourses(courses) {
       courseItem.classList.add('course-item');
       const titleElement = document.createElement('h2');
       titleElement.textContent = course.title;
-      const instructorElement = document.createElement('p');
-      instructorElement.textContent = `Instructor: ${course.instructorName}`;
       const descriptionElement = document.createElement('p');
       descriptionElement.textContent = `Description: ${course.description}`;
       const categoryElement = document.createElement('p');
@@ -54,7 +53,7 @@ async function displayCourses(courses) {
         enrollButton.textContent = 'Resume';
         enrollButton.classList.replace('enroll-button', 'resume-button');
         enrollButton.addEventListener('click', () => {
-          window.location.href = `/frontend/pages/contentcourse.html?courseId=${course._id}`;  // Redirect to the course content page if resume
+          window.location.href = `../pages/contentcourse.html?courseId=${course._id}`;  // Redirect to the course content page if resume
         });
       } else {
         enrollButton.textContent = 'Enroll Now';
@@ -62,7 +61,7 @@ async function displayCourses(courses) {
           try {
             const success = await enroll(course._id, course.title);
             if (success) {
-              window.location.href = `/frontend/pages/contentcourse.html?courseId=${course._id}`;  // Redirect to the course content page if enroll
+              window.location.href = `../pages/contentcourse.html?courseId=${course._id}`;  // Redirect to the course content page if enroll
             } else {
               alert('Failed to enroll in course. Try again!');
             }
@@ -73,7 +72,6 @@ async function displayCourses(courses) {
         });
       }
       courseItem.appendChild(titleElement);
-      courseItem.appendChild(instructorElement);
       courseItem.appendChild(descriptionElement);
       courseItem.appendChild(categoryElement);
       courseItem.appendChild(difficultyElement);

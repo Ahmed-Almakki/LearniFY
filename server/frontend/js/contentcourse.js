@@ -2,6 +2,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const courseId = urlParams.get('courseId');
 
 if (courseId) {
+    console.log('before fetch');
     fetchCourseContent(courseId);
 } else {
     alert('No course ID provided');

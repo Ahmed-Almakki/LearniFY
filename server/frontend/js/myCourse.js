@@ -137,6 +137,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  window.addContent = (courseId) => {
+    window.location.href = `../pages/Lectures.html?courseId=${courseId}`;
+  };
+
   fetchInstructorCourses();
 
   const createCourseForm = document.getElementById('create-course-form');

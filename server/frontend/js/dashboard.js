@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+
   const fetchUserData = () => {
     const token = localStorage.getItem('token');
     if (token) {
@@ -28,6 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
               link.textContent = 'View Course';
               link.href = 'course.html'; 
             }
+
+            fetchUserCourses(token);
           }
         })
         .catch(error => {
@@ -38,6 +41,55 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error('No token found. User is not authenticated.');
       window.location.href = 'login.html'; 
     }
+  };
+
+  const fetchUserCourses = (token) => {
+    fetch('http://localhost:3000/api/student/dashboard', {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      }
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch courses');
+        }
+        return response.json();
+      })
+      .then(data => {
+        if (data.sucess && data.allCourses) {
+          console.log('asaasfsafsfsdfsdf', data.allCourses);
+          displayCourses(data.allCourses);
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching courses:', error);
+      });
+  };
+
+  const displayCourses = (courses) => {
+    const userInfoBox = document.querySelector('.user-info-box');
+    const coursesContainer = document.createElement('div');
+    coursesContainer.classList.add('courses-container');
+
+
+    courses.forEach(course => {
+      console.log('aaaaaaaaaaaaaaaaaaaaa', course);
+      const courseCard = document.createElement('div');
+      courseCard.classList.add('course-card');
+
+      console.log(course);
+
+      courseCard.innerHTML = `
+        <h3>${course.courseId.title}</h3>
+        <p>${course.courseId.category}</p>
+        <a href="../pages/contentcourse.html?courseId=${course.courseId._id}">View Course</a>
+      `;
+
+      coursesContainer.appendChild(courseCard);
+    });
+
+    userInfoBox.insertAdjacentElement('afterend', coursesContainer);
   };
 
   const logout = () => {

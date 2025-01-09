@@ -23,12 +23,12 @@ router.post('/sumbit-quize', ProgressController.PostProg);
 router.get('/search/:query', StudentController.searchCourse);
 
 // view all courses "for dashboard"
-router.get('/:userId/dashboard', StudentController.viewAllCourse);
+router.get('/dashboard', StudentController.viewAllCourse);
 
 // get specife course
 router.get('/enrollment-status/:courseId', StudentController.checkEnrollment);
 
-// show your progress
+// show your course
 router.get('/course/content/:courseId', StudentController.GetContent);
 
 export default router;

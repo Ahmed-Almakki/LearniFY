@@ -14,16 +14,14 @@ class InstructorController {
       "type": "video",
     }
     */
-    const { courseId } = req.params;
-    if (!courseId) {
-      return sendError(res, 'Missing courseId');
-    }
-
     const {
+      courseId,
       pathToLecture,
       type,
     } = req.body;
-
+    if (!courseId) {
+      return sendError(res, 'Missing courseId');
+    }
     if (!pathToLecture || !type) {
       return sendError(res, 'Missing either path or type or lessonTitle or resuources');
     }

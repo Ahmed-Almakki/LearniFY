@@ -56,7 +56,7 @@ class StudentController {
   }
 
   static async viewAllCourse(req, res) {
-    const { userId } = req.params;
+    const userId = req.user.id;
 
     if (!userId) {
       return sendError(res, 'Missing UserId');

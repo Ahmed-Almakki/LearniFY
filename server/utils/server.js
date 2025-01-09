@@ -13,8 +13,8 @@ function CreateServer() {
   const app = express();
   
   app.use(express.json());
-  app.use(cors());
   app.use(express.static(path.resolve('frontend')));
+  app.use(cors());
   app.use(process.env.USER_API_PREFIX || '/api/user', Router);
   app.use(process.env.STUDENT_API_PREFIX || '/api/student', studentRouter);
   app.use(process.env.INSTRUCTOR_API_PREFIX || '/api/instructor', instructorRouter);
