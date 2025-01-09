@@ -5,7 +5,7 @@ const Contents = new mongoose.Schema({
   pathToLecture: { type: String, required: true },
   type: {
     type: String,
-    enum: ['Article', 'video'],
+    enum: ['Article', 'Video'],
     required: true,
   },
 });

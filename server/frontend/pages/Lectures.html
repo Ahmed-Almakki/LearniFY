@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Add Content - NileLX</title>
-  <link rel="stylesheet" href="../css/myCourse.css">
+  <link rel="stylesheet" href="../css/Lecture.css">
 </head>
 <body>
-  <header>
+  <header class="blue-header">
     <h1>Add Content</h1>
     <nav>
       <ul>
@@ -16,24 +16,31 @@
       </ul>
     </nav>
   </header>
-  <main>
-    <form id="add-content-form">
-      <label for="content-type">Content Type:</label>
-      <select id="content-type" required>
-        <option value="Article">Article</option>
-        <option value="video">Video</option>
-      </select>
+  <main class="main-container">
+    <div class="form-box">
+      <form id="add-content-form">
+        <label for="content-type">Content Type:</label>
+        <select id="content-type" required>
+          <option value="Article">Article</option>
+          <option value="Video">Video</option>
+        </select>
 
-      <label for="content-path">Path to Lecture:</label>
-      <input type="text" id="content-path" placeholder="e.g., /path/to/lecture" required>
+        <label for="content-path">Lecture:</label>
+        <input type="text" id="content-path" placeholder="e.g., /path/to/lecture" required>
 
-      <button type="submit">Add Content</button>
-    </form>
+        <button type="submit">Add Content</button>
+      </form>
+    </div>
+    
+    <div id="content-list-container">
+      <h2>Existing Content</h2>
+      <div id="content-list" class="content-grid"></div>
+    </div>
   </main>
-  <footer>
+  <footer class="blue-footer">
     <p>&copy; 2025 NileLX. All rights reserved.</p>
   </footer>
 
-  <script src="../js/Lectures.js"></script> <!-- Link the JS file -->
+  <script src="../js/Lectures.js"></script>
 </body>
 </html>

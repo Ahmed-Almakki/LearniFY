@@ -25,12 +25,13 @@ document.addEventListener('DOMContentLoaded', () => {
             if (data.user.role === 'instructor') {
               link.textContent = 'Courses';
               link.href = 'myCourse.html';
+              document.getElementById('my-courses-title').style.display = 'none'; // Hide "My Courses" for instructors
             } else {
               link.textContent = 'View Course';
-              link.href = 'course.html'; 
+              link.href = 'course.html';
+              document.getElementById('my-courses-title').style.display = 'block'; // Show "My Courses" for students
+              fetchUserCourses(token); // Only fetch courses for students
             }
-
-            fetchUserCourses(token);
           }
         })
         .catch(error => {
@@ -39,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     } else {
       console.error('No token found. User is not authenticated.');
-      window.location.href = 'login.html'; 
+      window.location.href = 'login.html';
     }
   };
 
@@ -58,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
       })
       .then(data => {
         if (data.sucess && data.allCourses) {
-          console.log('asaasfsafsfsdfsdf', data.allCourses);
+          console.log('Fetched courses:', data.allCourses);
           displayCourses(data.allCourses);
         }
       })
@@ -72,13 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const coursesContainer = document.createElement('div');
     coursesContainer.classList.add('courses-container');
 
-
     courses.forEach(course => {
-      console.log('aaaaaaaaaaaaaaaaaaaaa', course);
       const courseCard = document.createElement('div');
       courseCard.classList.add('course-card');
-
-      console.log(course);
 
       courseCard.innerHTML = `
         <h3>${course.courseId.title}</h3>

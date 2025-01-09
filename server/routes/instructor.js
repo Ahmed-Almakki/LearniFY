@@ -18,6 +18,7 @@ router.get('/:instructorId/course', InstructorController.retriveCourses); // ret
 
 router.post('/content', InstructorController.PostContent); // Create a content
 router.put('/:courseId/content', InstructorController.updateContent); // update a content
+router.get('/content/:courseId', InstructorController.GetContent); // retrive content
 router.delete('/content/:courseId/:contentId', InstructorController.DelContent); // delete a content
 
 router.get('/course/:courseId/students', InstructorController.viewEnrolledStudents); // View enrolled students

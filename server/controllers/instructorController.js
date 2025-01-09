@@ -155,6 +155,22 @@ class InstructorController {
     }
   }
 
+  static async GetContent(req, res) {
+    const { courseId } = req.params;
+    if (!courseId) {
+      return sendError(res, 'Missing coursId');
+    }
+    const cont = await CourseOp.retriveContent({ courseId });
+    if (!cont) {
+      return sendError(res, 'Cannot retrive', 404);
+    }
+    return res.status(200).json({
+      success: true,
+      message: "successfully retrive contents",
+      contents: cont,
+    });
+  }
+
   static async createCourse(req, res) {
     const {
       title,

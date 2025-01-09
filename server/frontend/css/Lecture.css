@@ -1,0 +1,129 @@
+/* General Styles */
+html, body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensures the footer is pushed to the bottom */
+}
+
+/* Header and Footer */
+.blue-header, .blue-footer {
+  background-color: #0044cc;
+  color: white;
+  padding: 15px;
+}
+
+.blue-header {
+  display: flex;
+  justify-content: space-between; /* Align title and links */
+  align-items: center;
+}
+
+.blue-header h1 {
+  margin: 0;
+}
+
+.blue-header nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.blue-header nav ul li {
+  margin: 0 15px;
+}
+
+.blue-header nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.blue-footer {
+  margin-top: auto; /* Pushes the footer to the bottom */
+  text-align: center;
+}
+
+/* Main Container */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  flex-grow: 1; /* Ensures the main container stretches */
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.form-box {
+  align-self: flex-start; /* Align form to the left */
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-box form label {
+  font-weight: bold;
+}
+
+.form-box form input, 
+.form-box form select, 
+.form-box form button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.form-box form button {
+  background-color: #0044cc;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.form-box form button:hover {
+  background-color: #003399;
+}
+
+/* Content List */
+#content-list-container {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.content-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  width: 100%;
+}
+
+.content-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  text-align: left;
+}
+
+.content-card h3 {
+  margin: 0 0 10px;
+  color: #0044cc;
+}
+
+.content-card p {
+  margin: 5px 0;
+}
