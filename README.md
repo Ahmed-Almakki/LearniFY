@@ -27,7 +27,7 @@ This project was developed as part of the ALX Software Engineering Program, and 
 To run the NileLX backend locally, follow the steps below:
 
 1. Clone the repository:
-    git clone https://github.com/yourusername/NileLX-backend.git
+    git clone https://github.com/Ahmed-Almakki/NileLX-backend.git
 
 2. Navigate into the project directory:
     cd NileLX-backend
@@ -65,7 +65,7 @@ Courses
 
 ## How to Run
 1. Clone the repository and install dependencies:
-    git clone https://github.com/yourusername/NileLX-backend.git
+    git clone https://github.com/Ahmed-Almakki/NileLX-backend.git
     cd NileLX-backend
     npm install
 2. Configure the .env file with your MongoDB connection string and other necessary details.
