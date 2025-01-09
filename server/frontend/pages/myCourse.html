@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Courses - NileLX</title>
+  <link rel="stylesheet" href="../css/myCourse.css">
+</head>
+<body>
+  <header>
+    <h1>My Courses</h1>
+    <!-- Navigation Bar -->
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="login.html">Account</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <p>Manage your courses here.</p>
+
+    <!-- Create Course Box -->
+    <div id="create-course-box" class="card">
+      <h2>Create a New Course</h2>
+      <form id="create-course-form">
+        <input type="text" id="course-title" placeholder="Course Title" required>
+        <input type="text" id="course-category" placeholder="Category" required>
+        <input type="text" id="course-difficulty" placeholder="Difficulty" required>
+        <textarea id="course-description" placeholder="Description" required></textarea>
+        <button type="submit">Create Course</button>
+      </form>
+    </div>
+
+    <!-- Courses List -->
+    <div id="courses-list" class="card">
+      <p>Loading courses...</p>
+    </div>
+
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025 NileLX. All rights reserved.</p>
+  </footer>
+
+  <script src="../js/myCourse.js"></script> <!-- Link to the JavaScript file -->
+</body>
+</html>

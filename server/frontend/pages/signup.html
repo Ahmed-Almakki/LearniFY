@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - NileLX</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Sign Up for NileLX</h1>
+    <nav>
+      <a href="../index.html" id="home-link">Home</a>
+    </nav>
+  </header>
+  <main>
+    <div class="signup-box">
+      <form id="signup-form">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        
+        <label for="role">Role:</label>
+        <select id="role" name="role" required>
+          <option value="student">Student</option>
+          <option value="instructor">Instructor</option>
+        </select>
+        
+        <button type="submit">Sign Up</button>
+      </form>
+      <p>Already have an account? <a href="./login.html">Login</a></p>
+    </div>
+  </main>
+
+  <script src="../js/signup.js"></script>
+</body>
+</html>

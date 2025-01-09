@@ -1,5 +1,5 @@
-# LearniFY - Backend Development
-Learnify is a backend project designed to power a learning platform where users can access courses, track their progress, and more. It allows course enrollment, content management, and integrates authentication for students and instructors.
+# NileLX - Backend Development
+NileLX is a backend project designed to power a learning platform where users can access courses, track their progress, and more. It allows course enrollment, content management, and integrates authentication for students and instructors.
 ## Table of Contents
 * Project Overview
 * Technologies Used
@@ -11,7 +11,7 @@ Learnify is a backend project designed to power a learning platform where users 
 * Acknowledgments
 
 ## Project Overview
-Learnify is a backend system built using Node.js, Express.js, and MongoDB that powers a learning platform. This project includes features like user authentication, course enrollment, course content management, and role-based access control. The project is designed to facilitate the management and delivery of online learning materials, while also keeping track of user progress and providing personalized learning paths.
+NileLX is a backend system built using Node.js, Express.js, and MongoDB that powers a learning platform. This project includes features like user authentication, course enrollment, course content management, and role-based access control. The project is designed to facilitate the management and delivery of online learning materials, while also keeping track of user progress and providing personalized learning paths.
 
 This project was developed as part of the ALX Software Engineering Program, and it highlights backend development skills along with the implementation of API endpoints to handle various user interactions with the platform.
 
@@ -24,13 +24,13 @@ This project was developed as part of the ALX Software Engineering Program, and 
 * Bcrypt.js: For password hashing and encryption.
 * Nodemon: For automatic server restarts during development.
 ## Installation
-To run the Learnify backend locally, follow the steps below:
+To run the NileLX backend locally, follow the steps below:
 
 1. Clone the repository:
-    git clone https://github.com/yourusername/learnify-backend.git
+    git clone https://github.com/yourusername/NileLX-backend.git
 
 2. Navigate into the project directory:
-    cd learnify-backend
+    cd NileLX-backend
 
 3. Install the required dependencies:
     npm install
@@ -65,8 +65,8 @@ Courses
 
 ## How to Run
 1. Clone the repository and install dependencies:
-    git clone https://github.com/yourusername/learnify-backend.git
-    cd learnify-backend
+    git clone https://github.com/yourusername/NileLX-backend.git
+    cd NileLX-backend
     npm install
 2. Configure the .env file with your MongoDB connection string and other necessary details.
 
