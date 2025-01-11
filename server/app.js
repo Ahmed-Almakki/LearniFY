@@ -9,8 +9,9 @@ const PORT = process.env.PORT || 4000;
 
 export const app = CreateServer();
 
-app.listen(PORT, async () => {
+const server = app.listen(PORT, async () => {
   console.log(`app is running on port ${PORT}`);
   await connect();
 });
 
+export default server;

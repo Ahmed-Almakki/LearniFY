@@ -144,7 +144,11 @@ class ProgressController {
     if (!finalResult) {
       return sendError(res, 'cannot update progress collection', 404);
     }
-    return res.status(200).json({ progress: finalResult.progress });
+    return res.status(200).json({
+      success: true,
+      progress: finalResult,
+      Result: finalResult.progress,
+    });
   }
 }
 

@@ -13,46 +13,34 @@ class StudentController {
     if (!userId) {
       return sendError(res, 'Un-authrized user', 400);
     }
-
-    try {
-      const student = await Enrollment.retriveAllEnrollment({ userId, courseId });
-      if (!student) {
-        return sendError(res, 'You are already enrolled', 400);
-      }
-      await Enrollment.createEnrollment({
-        userId,
-        courseId,
-      });
-
-      return res.status(200).json({ message: 'Successfully enrolled in the course' });
-    } catch (err) {
-      console.error(err);
-      return sendError(res, 'An error occurred while enrolling.', 500);
+    const courseExists = await coursesOp.searchCourse({ _id: courseId });
+    if (!courseExists) {
+      return sendError(res, 'Course Not Exists', 404);
     }
+    const student = await Enrollment.retriveAllEnrollment({ userId, courseId });
+    if (!student) {
+      return sendError(res, 'You are already enrolled', 400);
+    }
+    await Enrollment.createEnrollment({
+      userId,
+      courseId,
+    });
+    return res.status(200).json({ message: 'Successfully enrolled in the course' });
   }
 
   // Get enrolled courses
   static async getEnrolledCourses(req, res) {
-    const { userId } = req.params;
-    console.log('usser', req.user);
+    const  userId  = req.user.id;
+  
+    const enrooled = await Enrollment.retriveAndPopulate({ userId });
 
-    try {
-      console.log('Finding student with userId:', userId);
-      const enrooled = await Enrollment.retriveAndPopulate({ userId: req.user.id });
-      console.log('Student found:', enrooled);
-
-      if (!enrooled) {
-        return sendError(res, 'Student profile not found!');
-      }
-
-      return res.status(200).json({
-        success: 'suucssfuly',
-        enrolledCourses: enrooled,
-      });
-    } catch (err) {
-      console.error('Error occurred:', err);
-      return sendError(res, 'An error occurred while fetching courses.', 500);
+    if (!enrooled) {
+      return sendError(res, 'Student profile not found!');
     }
+    return res.status(200).json({
+      message: 'content retrived',
+      enrolledCourses: enrooled,
+    });
   }
 
   static async viewAllCourse(req, res) {
@@ -91,22 +79,16 @@ class StudentController {
   }
 
   static async checkEnrollment(req, res) {
-    try {
-      const userId = req.user.id;
-      const courseId = req.params.courseId;
-      if (!userId || !courseId) {
-        return sendError(res, 'Missing either userId or coursedId');
-      }
-
-      const user = await Enrollment.retriveAllEnrollment({ userId, courseId });
-      if (!user) {
-        return res.status(404).json({ message: 'User not found' });
-      }
-      return res.status(200).json({ user });
-    } catch (error) {
-      console.error('Error checking enrollment status:', error);
-      return res.status(500).json({ message: 'Failed to check enrollment status' });
+    const userId = req.user.id;
+    const courseId = req.params.courseId;
+    if (!userId || !courseId) {
+      return sendError(res, 'Missing either userId or coursedId');
     }
+    const user = await Enrollment.retriveAllEnrollment({ userId, courseId });
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    return res.status(200).json({ user });
   }
 
   static async GetContent(req, res) {

@@ -16,9 +16,6 @@ router.post('/enroll', StudentController.enrollCourse);
 // Get all enrolled courses
 router.get('/courses', StudentController.getEnrolledCourses);
 
-// Update course progress
-router.post('/sumbit-quize', ProgressController.PostProg);
-
 // search for course
 router.get('/search/:query', StudentController.searchCourse);
 
@@ -30,5 +27,8 @@ router.get('/enrollment-status/:courseId', StudentController.checkEnrollment);
 
 // show your course
 router.get('/course/content/:courseId', StudentController.GetContent);
+
+// Update course progress
+router.post('/submit-quize', ProgressController.PostProg);
 
 export default router;

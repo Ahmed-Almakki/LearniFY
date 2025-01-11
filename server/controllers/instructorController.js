@@ -10,8 +10,9 @@ class InstructorController {
   static async PostContent(req, res) {
     /*
     {
+      "courseId": "1234",
       "path": "https://drive.google.com/file/d/1yjBajX3-TId3tDAgVNR6qDYIHLiHRGfI/view?usp=drive_link",
-      "type": "video",
+      "type": "video"
     }
     */
     const {
@@ -43,79 +44,39 @@ class InstructorController {
   }
 
   static async updateContent(req, res) {
-    const { courseId } = req.params;
-    if (!courseId) {
-      return sendError(res, 'Missing courseId');
+    const { contentId } = req.body;
+
+    if (!contentId) {
+      return sendError(res, 'Missing contentId');
     }
 
-    const {
-      lessonTitle,
-      newLessonTitle,
-      resources,
-      contentId,
-      path,
-      type,
-    } = req.body;
+    const { pathToLecture, type } = req.body;
 
-    // must have parameters
-    if (!lessonTitle) {
-      return sendError(res, 'Missing lessonTitle');
-    }
     try {
-      let updatedContent = null;
+      const updateContentFields = {};
+      if (pathToLecture) updateContentFields.pathToLecture = pathToLecture;
+      if (type) updateContentFields.type = type;
 
-      // Update specific content as provided by url
-      if (contentId && (path || type)) {
-        const updateContentFields = {};
-        if (path) updateContentFields.path = path;
-        if (type) updateContentFields.type = type;
-
-        updatedContent = await Content.findByIdAndUpdate(
-          contentId,
-          updateContentFields,
-          { new: true },
-        );
-
-        if (!updatedContent) {
-          return sendError(res, 'Content not found.', 500);
-        }
-      }
-
-      // Prepare the fields to update in the lesson
-      const updateFields = {};
-      if (newLessonTitle) {
-        updateFields['lessons.$.lessonTitle'] = newLessonTitle;
-      }
-      if (resources) {
-        updateFields['lessons.$.resources'] = resources;
-      }
-      if (updatedContent) {
-        updateFields['lessons.$.content'] = updatedContent;
-      }
-
-      // If no fields to update, return an error
-      if (Object.keys(updateFields).length === 0) {
+      if (Object.keys(updateContentFields).length === 0) {
         return res.status(400).json({ error: 'No valid fields provided for update.' });
       }
 
-      // Update the course lesson
-      const updatedCourse = await Courses.findOneAndUpdate(
-        { _id: courseId, 'lessons.lessonTitle': lessonTitle },
-        { $set: updateFields },
+      const updatedContent = await Content.findByIdAndUpdate(
+        contentId,
+        updateContentFields,
         { new: true },
       );
-
-      if (!updatedCourse) {
-        return sendError(res, 'Lesson not found in the course.', 400);
+      if (!updatedContent) {
+        return sendError(res, 'Content not found.', 404);
       }
 
       return res.status(200).json({
-        message: 'Lesson updated successfully.',
-        updatedCourse,
+        message: 'Content updated successfully.',
+        updatedContent,
       });
     } catch (error) {
       console.error(error);
-      return res.status(500).json({ error: 'An error occurred while updating the lesson.' });
+      return res.status(500).json({ error: 'An error occurred while updating the content.' });
     }
   }
 
@@ -134,16 +95,6 @@ class InstructorController {
         return sendError(res, 'Content not found');
       }
 
-      // Remove the lesson that contains the deleted content from the lessons array
-      const updatedCourse = await Courses.findOneAndUpdate(
-        { _id: courseId },
-        { $pull: { lessons: { 'content._id': contentObjectId } } },
-        { new: true },
-      );
-
-      if (!updatedCourse) {
-        return sendError(res, 'Course not found or lesson not found', 400);
-      }
 
       return res.status(200).json({
         message: 'Content and associated lesson deleted successfully',
@@ -202,8 +153,6 @@ class InstructorController {
       message: 'Course created successfully',
       course: newCourse,
     });
-
-    // const content = await contents.createContent()
   }
 
   static async updateCourse(req, res) {
@@ -222,20 +171,18 @@ class InstructorController {
       return sendError(res, 'Missing courseId!');
     }
 
-    try {
-      const updatedCourse = await CourseOp.updCourse(
-        courseId,
-        { title, description },
-      );
-      if (!updatedCourse) return sendError(res, 'Course not found!');
-      return res.json({
-        success: true,
-        message: 'Course updated successfully',
-        course: updatedCourse,
-      });
-    } catch (error) {
-      return sendError(res, 'Failed to update course', 400);
-    }
+    const updatedCourse = await CourseOp.updCourse(
+      courseId,
+      { title, description },
+    );
+
+    if (!updatedCourse) return sendError(res, 'Course not found!');
+
+    return res.json({
+      success: true,
+      message: 'Course updated successfully',
+      course: updatedCourse,
+    });
   }
 
   static async deleteCourse(req, res) {
@@ -258,59 +205,19 @@ class InstructorController {
     });
   }
 
-  static async viewEnrolledStudents(req, res) {
-    const { courseId } = req.params;
-
-    // Error handling: Check for missing courseId
-    if (!courseId) {
-      return sendError(res, 'Missing courseId!');
-    }
-
-    try {
-      // Example: Fetch students from an Enrollment model (to be defined)
-      const enrolledStudents = await Enrollment.retriveAllEnrollment({ courseId });
-
-      if (!enrolledStudents || enrolledStudents === 0) {
-        return res.status(404).json({ error: 'No enrolled students found for this course.' });
-      }
-
-      // retrive the progress of student in the givin course
-      const ResProg = await prog.retriveProgress({
-        courseId,
-        studentId: enrolledStudents[0].userId,
-      });
-      if (!ResProg) {
-        return sendError(res, 'Missing Progress');
-      }
-
-      // update the Enrollment progress from the progress collection
-      const enrroll = await Enrollment.updateEnrollment(
-        enrolledStudents[0]._id,
-        { progress: ResProg[0].progress },
-      );
-      if (!enrroll) {
-        return sendError(res, 'Cannot update enrollment');
-      }
-      return res.json({
-        success: true,
-        students: enrolledStudents,
-        numberOfStudent: enrolledStudents.length,
-      });
-    } catch (error) {
-      return sendError(res, 'Failed to fetch enrolled students', error);
-    }
-  }
-
   static async viewAllCourse(req, res) {
     const { instructorId } = req.params;
+
     if (!instructorId) {
       return sendError(res, 'Missing UserId');
     }
+
     const AllCourses = await CourseOp.searchCourse({ instructorId });
-    console.log(AllCourses);
+
     if (!AllCourses) {
       return sendError(res, 'Cannot retrive all course');
     }
+
     return res.json({
       sucess: true,
       AllCourse: AllCourses,

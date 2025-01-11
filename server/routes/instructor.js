@@ -18,15 +18,13 @@ router.get('/:instructorId/course', InstructorController.retriveCourses); // ret
 
 router.post('/content', InstructorController.PostContent); // Create a content
 router.put('/:courseId/content', InstructorController.updateContent); // update a content
-router.get('/content/:courseId', InstructorController.GetContent); // retrive content
+router.get('/:courseId/content', InstructorController.GetContent); // retrive content
 router.delete('/content/:courseId/:contentId', InstructorController.DelContent); // delete a content
 
-router.get('/course/:courseId/students', InstructorController.viewEnrolledStudents); // View enrolled students
-
-router.post('/:courseId/quize', QuizeController.PostQuiz); // Create a quize
-router.put('/:courseId/quize/:quizeId', QuizeController.UpdQuiz); // update a quize
+router.post('/quize/:courseId', QuizeController.PostQuiz); // Create a quize
+router.put('/quize/:courseId/:quizeId', QuizeController.UpdQuiz); // update a quize
 router.delete('/quize/:quizeId', QuizeController.DelQuiz); // delete quize
 
-router.get('/:instructorId/dashboard', InstructorController.viewAllCourse); // instructore dashboard
+router.get('/dashboard/:instructorId', InstructorController.viewAllCourse); // instructore dashboard
 
 export default router;

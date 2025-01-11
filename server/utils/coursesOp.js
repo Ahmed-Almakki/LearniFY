@@ -5,7 +5,7 @@ async function createCourse(options = {}) {
     const result = await Courses.create(options);
     return result;
   } catch (error) {
-    console.log('error is because of :', error);
+    console.log('cannot create course due to :', error);
     return null;
   }
 }
@@ -16,7 +16,7 @@ async function searchCourse(options = {}) {
     const result = await Courses.find(options);
     return result;
   } catch (error) {
-    console.log('error is sdfsdfs: ', error);
+    console.log('cannot search course due to : ', error);
     return null;
   }
 }
@@ -28,7 +28,7 @@ async function updCourse(ObjectId, updatedfield) {
     const result = await Courses.findByIdAndUpdate(ObjectId, updatedfield, { new: true });
     return result;
   } catch (err) {
-    console.log('Error becuase of :', err);
+    console.log('cannot update course due to:', err);
     return null;
   }
 }
@@ -39,7 +39,7 @@ async function delCourse(ObjectId) {
     const result = await Courses.findByIdAndDelete(ObjectId);
     return result;
   } catch (error) {
-    console.log('Error because of : ', error);
+    console.log('cannot delete course due to : ', error);
     return null;
   }
 }
@@ -49,7 +49,7 @@ async function createContent(options = {}) {
     const result = await Content.create(options);
     return result;
   } catch (error) {
-    console.log('Error is because of: ', error);
+    console.log('cannot create content due to : ', error);
     return null;
   }
 }
@@ -59,7 +59,7 @@ async function retriveContent(options = {}) {
     const result = await Content.find(options);
     return result;
   } catch (error) {
-    console.log('Error is because of:', error);
+    console.log('cannot retrive content due to :', error);
     return null;
   }
 }
@@ -69,7 +69,7 @@ async function updateContent(ObjectId, updatedFile) {
     const result = await Content.findByIdAndUpdate(ObjectId, updatedFile, { new: true });
     return result;
   } catch (error) {
-    console.log('Error is because of: ', error);
+    console.log('cannot update content due to : ', error);
     return null;
   }
 }
@@ -79,7 +79,7 @@ async function delContent(ObjectId) {
     const result = await Content.findByIdAndDelete(ObjectId);
     return result;
   } catch (error) {
-    console.log('Error is because of: ', error);
+    console.log('cannot delete content due to : ', error);
     return null;
   }
 }

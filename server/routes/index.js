@@ -4,7 +4,6 @@ import {
   createUser,
   loginUser,
   RertiveUser,
-  showAllCourse,
 } from '../controllers/user.js';
 import {
   validateUser,
