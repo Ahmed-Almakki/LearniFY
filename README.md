@@ -46,6 +46,7 @@ To run the NileLX backend locally, follow the steps below:
 Your backend server should now be running on http://localhost:3000
 
 ## API Documentation
+For detailed API documentation, including request and response examples, view it on Postman: [API Documentation on Postman](https://documenter.getpostman.com/view/your_collection_id)
 The API allows users to interact with the platform. Below are some of the key endpoints:
 
 ## Authentication
@@ -65,8 +66,8 @@ Courses
 
 ## How to Run
 1. Clone the repository and install dependencies:
-    git clone https://github.com/Ahmed-Almakki/NileLX-backend.git
-    cd NileLX-backend
+    git clone https://github.com/Ahmed-Almakki/NileLX.git
+    cd NileLX
     npm install
 2. Configure the .env file with your MongoDB connection string and other necessary details.
 
