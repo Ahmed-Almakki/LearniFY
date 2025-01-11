@@ -46,7 +46,7 @@ To run the NileLX backend locally, follow the steps below:
 Your backend server should now be running on http://localhost:3000
 
 ## API Documentation
-For detailed API documentation, including request and response examples, view it on Postman: [API Documentation on Postman](https://documenter.getpostman.com/view/your_collection_id)
+For detailed API documentation, including request and response examples, view it on Postman: [API Documentation on Postman](https://documenter.getpostman.com/view/37692496/2sAYQWKDQH)
 The API allows users to interact with the platform. Below are some of the key endpoints:
 
 ## Authentication
