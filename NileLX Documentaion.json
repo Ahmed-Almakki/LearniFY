@@ -1,0 +1,2441 @@
+{
+	"info": {
+		"_postman_id": "3ed39c64-0ca6-4824-9b40-e846853c8734",
+		"name": "NileLX API",
+		"description": "Welcome to the NileLXAPI documentation! This API powers the backend of the NileLX learning platform, designed to facilitate online education through a robust set of features. The API allows users to:\n\n- Register as students or instructors.\n    \n- Authenticate and securely log in using JWT.\n    \n- Manage course enrollment and progress tracking.\n    \n- Handle quiz grading and provide feedback.\n    \n- Access and manage user data for students and instructors.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37692496"
+	},
+	"item": [
+		{
+			"name": "User API's endpoints",
+			"item": [
+				{
+					"name": "User Registeration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Ahmed\",\r\n    \"email\": \"Ahmed@gmail.com\",\r\n    \"password\": \"ALXcourse1234@\",\r\n    \"role\": \"instructor\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"login"
+							]
+						},
+						"description": "Creates a new user account"
+					},
+					"response": [
+						{
+							"name": "Registering output",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Ahmed\",\r\n    \"email\": \"Ahmed@gmail.com\",\r\n    \"password\": \"ALXcourse1234@\",\r\n    \"role\": \"instructor\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/user/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"user",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "157",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9d-6UO2ZatvhKUcHOtqwK6THRJPkJc\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 11 Jan 2025 14:00:48 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"User created successfully!\",\n    \"user\": {\n        \"id\": \"67827990f9bc943427b24496\",\n        \"name\": \"Ahmed\",\n        \"email\": \"ahmed@gmail.com\",\n        \"role\": \"instructor\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Login user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ODI5N2JkOWQ5MjU0YjhlZWMyM2UzZiIsInJvbGUiOiJpbnN0cnVjdG9yIiwiaWF0IjoxNzM2NjExNzg1LCJleHAiOjE3MzY2MTUzODV9.uhvDsKTBANBFsy0nZBcGToxhRO3RStB2O_lK5H2XCSE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"Ahmed@gmail.com\",\r\n    \"password\": \"ALXcourse1234@\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"login"
+							]
+						},
+						"description": "Authenticates a user and returns a JWT token"
+					},
+					"response": [
+						{
+							"name": "Login user output",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"Ahmed@gmail.com\",\r\n    \"password\": \"ALXcourse1234@\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/user/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"user",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "260",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"104-luZxxDOwpV+zRVfcBzoOMgEv9IE\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 11 Jan 2025 16:09:45 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Logged in successfully.\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ODI5N2JkOWQ5MjU0YjhlZWMyM2UzZiIsInJvbGUiOiJpbnN0cnVjdG9yIiwiaWF0IjoxNzM2NjExNzg1LCJleHAiOjE3MzY2MTUzODV9.uhvDsKTBANBFsy0nZBcGToxhRO3RStB2O_lK5H2XCSE\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get User Info",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ODI5N2JkOWQ5MjU0YjhlZWMyM2UzZiIsInJvbGUiOiJpbnN0cnVjdG9yIiwiaWF0IjoxNzM2NjExNzg1LCJleHAiOjE3MzY2MTUzODV9.uhvDsKTBANBFsy0nZBcGToxhRO3RStB2O_lK5H2XCSE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/user/me",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"me"
+							]
+						},
+						"description": "Retrive user details for displaying on the dashbord"
+					},
+					"response": [
+						{
+							"name": "Get User Info output",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/user/me",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"user",
+										"me"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "313",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"139-v5wfE/Et5drAUfPmL9zSMJJzhdY\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 11 Jan 2025 16:37:30 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"successfully retrived\",\n    \"success\": true,\n    \"user\": {\n        \"_id\": \"678297bd9d9254b8eec23e3f\",\n        \"name\": \"Ahmed\",\n        \"email\": \"ahmed@gmail.com\",\n        \"password\": \"$2a$10$bDA8t58M3qodQ/b1c85WVedOAfRwK3n2gawaTOwM01eEMRBISfy/i\",\n        \"role\": \"instructor\",\n        \"createdAt\": \"2025-01-11T16:09:33.570Z\",\n        \"updatedAt\": \"2025-01-11T16:09:33.570Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				}
+			],
+			"description": "This folder contains API endpoints related to user operations, including:\n\n- User registration.\n    \n- User login.\n    \n- Retrieving user information for the dashboard."
+		},
+		{
+			"name": "Student API's endpoint",
+			"item": [
+				{
+					"name": "Enroll in Course",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ODJiMTIyOTBiYWI1NjczMTc2MDlhOCIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzM2NjE4Mjg1LCJleHAiOjE3MzY2MjE4ODV9.ODMUi3cSM4Wz_HWuQbE626V_0TArFEashS56rvw3Lp0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"courseId\": \"67829d869d9254b8eec23e49\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/student/enroll",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"student",
+								"enroll"
+							]
+						},
+						"description": "Allows a student to enroll in a course"
+					},
+					"response": [
+						{
+							"name": "Enroll in Course output",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"courseId\": \"67829d869d9254b8eec23e49\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/student/enroll",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"student",
+										"enroll"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "49",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"31-wg+vTFQ/BYvFqbneJ/ilU0him58\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 11 Jan 2025 17:59:14 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successfully enrolled in the course\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get All Enrolled Course",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ODJiMTIyOTBiYWI1NjczMTc2MDlhOCIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzM2NjE4Mjg1LCJleHAiOjE3MzY2MjE4ODV9.ODMUi3cSM4Wz_HWuQbE626V_0TArFEashS56rvw3Lp0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/student/courses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"student",
+								"courses"
+							]
+						},
+						"description": "Retrieves a list of all courses the student is enrolled in"
+					},
+					"response": [
+						{
+							"name": "Retrive Enrolled Course output",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/student/courses",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"student",
+										"courses"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "473",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1d9-Ofd5LuekQCZet+BQuVaiQ+/Moik\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 11 Jan 2025 18:00:31 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"content retrived\",\n    \"enrolledCourses\": [\n        {\n            \"_id\": \"6782b17290bab567317609ad\",\n            \"userId\": \"6782b12290bab567317609a8\",\n            \"courseId\": {\n                \"_id\": \"67829d869d9254b8eec23e49\",\n                \"title\": \"Course Title\",\n                \"description\": \"etc...\",\n                \"category\": \"new Category\",\n                \"difficulty\": \"easy\",\n                \"instructorId\": \"678297bd9d9254b8eec23e3f\",\n                \"createdAt\": \"2025-01-11T16:34:14.934Z\",\n                \"updatedAt\": \"2025-01-11T17:11:13.901Z\",\n                \"__v\": 0\n            },\n            \"createdAt\": \"2025-01-11T17:59:14.335Z\",\n            \"updatedAt\": \"2025-01-11T17:59:14.335Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Search for Course",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ODJiMjRkOTBiYWI1NjczMTc2MDliMyIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzM2NjE4NTc1LCJleHAiOjE3MzY2MjIxNzV9.AZRjS4p8myxXQXSfvPSrtERQ5bFC-nTtN3wT-pB-8_M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/student/search/Course Title",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"student",
+								"search",
+								"Course Title"
+							]
+						},
+						"description": "Search for course based on the query  \n\"**/api/student/search/:query**\""
+					},
+					"response": [
+						{
+							"name": "Search for Course output",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/student/search/Course Title",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"student",
+										"search",
+										"Course Title"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "256",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"100-DbqygZ0nqPHuqmQNyVVQs12EXis\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 11 Jan 2025 18:43:01 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"_id\": \"67829d869d9254b8eec23e49\",\n        \"title\": \"Course Title\",\n        \"description\": \"etc...\",\n        \"category\": \"new Category\",\n        \"difficulty\": \"easy\",\n        \"instructorId\": \"678297bd9d9254b8eec23e3f\",\n        \"createdAt\": \"2025-01-11T16:34:14.934Z\",\n        \"updatedAt\": \"2025-01-11T17:11:13.901Z\",\n        \"__v\": 0\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "View all Courses",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ODJiMjRkOTBiYWI1NjczMTc2MDliMyIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzM2NjE4NTc1LCJleHAiOjE3MzY2MjIxNzV9.AZRjS4p8myxXQXSfvPSrtERQ5bFC-nTtN3wT-pB-8_M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/student/dashboard",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"student",
+								"dashboard"
+							]
+						},
+						"description": "Retrieves all available courses for displaying on the website to show all available courses"
+					},
+					"response": [
+						{
+							"name": "View all Courses output",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/student/dashboard",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"student",
+										"dashboard"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "453",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1c5-ULhLbOAbFKON146elOMyqfSlB7I\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 11 Jan 2025 18:46:25 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"sucess\": true,\n    \"allCourses\": [\n        {\n            \"_id\": \"6782bc7890bab567317609c0\",\n            \"userId\": \"6782b24d90bab567317609b3\",\n            \"courseId\": {\n                \"_id\": \"67829d869d9254b8eec23e49\",\n                \"title\": \"Course Title\",\n                \"description\": \"etc...\",\n                \"category\": \"new Category\",\n                \"difficulty\": \"easy\",\n                \"instructorId\": \"678297bd9d9254b8eec23e3f\",\n                \"createdAt\": \"2025-01-11T16:34:14.934Z\",\n                \"updatedAt\": \"2025-01-11T17:11:13.901Z\",\n                \"__v\": 0\n            },\n            \"createdAt\": \"2025-01-11T18:46:16.768Z\",\n            \"updatedAt\": \"2025-01-11T18:46:16.768Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Check Enrollment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ODJiMjRkOTBiYWI1NjczMTc2MDliMyIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzM2NjE4NTc1LCJleHAiOjE3MzY2MjIxNzV9.AZRjS4p8myxXQXSfvPSrtERQ5bFC-nTtN3wT-pB-8_M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/student/enrollment-status/67829d869d9254b8eec23e49",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"student",
+								"enrollment-status",
+								"67829d869d9254b8eec23e49"
+							]
+						},
+						"description": "Checks if the student is enrolled in a specific course  \n  \n\"**/api/student/enrollment-status/:course ID**\""
+					},
+					"response": [
+						{
+							"name": "Check Enrollment output",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/student/enrollment-status/67829d869d9254b8eec23e49",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"student",
+										"enrollment-status",
+										"67829d869d9254b8eec23e49"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "205",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"cd-u4aVrxrgSz278eStYRpURTAFmWA\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 11 Jan 2025 18:48:07 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": [\n        {\n            \"_id\": \"6782bc7890bab567317609c0\",\n            \"userId\": \"6782b24d90bab567317609b3\",\n            \"courseId\": \"67829d869d9254b8eec23e49\",\n            \"createdAt\": \"2025-01-11T18:46:16.768Z\",\n            \"updatedAt\": \"2025-01-11T18:46:16.768Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Course  Contents",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ODJiMjRkOTBiYWI1NjczMTc2MDliMyIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzM2NjE4NTc1LCJleHAiOjE3MzY2MjIxNzV9.AZRjS4p8myxXQXSfvPSrtERQ5bFC-nTtN3wT-pB-8_M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/student/course/content/67829d869d9254b8eec23e49",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"student",
+								"course",
+								"content",
+								"67829d869d9254b8eec23e49"
+							]
+						},
+						"description": "Retrieves the content of a specific course the student is enrolled in  \n  \n\"**/api/student/course/content/:course ID**\""
+					},
+					"response": [
+						{
+							"name": "Retrive Course  Contents output",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/student/course/content/67829d869d9254b8eec23e49",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"student",
+										"course",
+										"content",
+										"67829d869d9254b8eec23e49"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "15",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f-brY7vSHEBV07ujDDU3u8Ep2BiDA\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 11 Jan 2025 18:49:57 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"contents\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "submit-quize",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ODJiMjRkOTBiYWI1NjczMTc2MDliMyIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzM2NjIyMjY0LCJleHAiOjE3MzY2MjU4NjR9.zYPyFtO5jnjLkl-Gn1YR8o6c64UpQgIJUlEqfXfTuRk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n      \"studentId\": \"6782b24d90bab567317609b3\",\r\n      \"courseId\": \"67829d869d9254b8eec23e49\",\r\n      \"quizeId\": \"6782bf5973ba1ae9d35829a1\",\r\n      \"answers\": [\r\n        { \"questionId\": \"123\", \"answer\": \"4\"},\r\n        { \"questionId\": \"1234\", \"answer\": \"A\"}\r\n      ]\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/student/submit-quize",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"student",
+								"submit-quize"
+							]
+						},
+						"description": "Updates the student's progress in a course after completing a quiz and calculate the total progress he/she make on the course"
+					},
+					"response": [
+						{
+							"name": "submit-quize output",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n      \"studentId\": \"6782b24d90bab567317609b3\",\r\n      \"courseId\": \"67829d869d9254b8eec23e49\",\r\n      \"quizeId\": \"6782bf5973ba1ae9d35829a1\",\r\n      \"answers\": [\r\n        { \"questionId\": \"123\", \"answer\": \"4\"},\r\n        { \"questionId\": \"1234\", \"answer\": \"A\"}\r\n      ]\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/student/submit-quize",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"student",
+										"submit-quize"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "287",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"11f-Kcqpq7+4d/flwQYefqjQrVxxoS8\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 11 Jan 2025 19:07:49 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"progress\": {\n        \"_id\": \"6782c0ea9c884a7e2df6d594\",\n        \"studentId\": \"6782b24d90bab567317609b3\",\n        \"courseId\": \"67829d869d9254b8eec23e49\",\n        \"totalQuizes\": 1,\n        \"completedQuizes\": 1,\n        \"progress\": 50,\n        \"createdAt\": \"2025-01-11T19:05:14.083Z\",\n        \"updatedAt\": \"2025-01-11T19:07:49.327Z\",\n        \"__v\": 0\n    },\n    \"Result\": 50\n}"
+						}
+					]
+				}
+			],
+			"description": "This folder contains API endpoints for student-specific actions, such as enrolling in courses, viewing enrolled courses, searching for courses, checking enrollment status, accessing course content, and updating course progress"
+		},
+		{
+			"name": "Instructor API's endpoints",
+			"item": [
+				{
+					"name": "creating course",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ODI5N2JkOWQ5MjU0YjhlZWMyM2UzZiIsInJvbGUiOiJpbnN0cnVjdG9yIiwiaWF0IjoxNzM2NjExNzg1LCJleHAiOjE3MzY2MTUzODV9.uhvDsKTBANBFsy0nZBcGToxhRO3RStB2O_lK5H2XCSE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Course Title\",\r\n    \"category\": \"new Category\",\r\n    \"difficulty\": \"easy\",\r\n    \"description\": \"etc...\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/instructor/course",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"instructor",
+								"course"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "creating course output",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n      \"title\": \"Course Title\",\r\n      \"category\": \"new Category\",\r\n      \"difficulty\": \"easy\",\r\n      \"description\": \"etc...\"\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/instructor/course",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"instructor",
+										"course"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "320",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"140-hX85P08zDrAGv11eggsLYsZC6Fc\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 11 Jan 2025 16:22:31 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Course created successfully\",\n    \"course\": {\n        \"title\": \"Course Title\",\n        \"description\": \"etc...\",\n        \"category\": \"new Category\",\n        \"difficulty\": \"easy\",\n        \"instructorId\": \"678297bd9d9254b8eec23e3f\",\n        \"_id\": \"67829ac79d9254b8eec23e44\",\n        \"createdAt\": \"2025-01-11T16:22:31.447Z\",\n        \"updatedAt\": \"2025-01-11T16:22:31.447Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Course",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ODI5N2JkOWQ5MjU0YjhlZWMyM2UzZiIsInJvbGUiOiJpbnN0cnVjdG9yIiwiaWF0IjoxNzM2NjExNzg1LCJleHAiOjE3MzY2MTUzODV9.uhvDsKTBANBFsy0nZBcGToxhRO3RStB2O_lK5H2XCSE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"UpdatedCourse Title\",\r\n    \"courseId\": \"67829ac79d9254b8eec23e44\",\r\n    \"description\": \"etc...\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/instructor/course/67829ac79d9254b8eec23e44",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"instructor",
+								"course",
+								"67829ac79d9254b8eec23e44"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Course output",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"UpdatedCourse Title\",\r\n    \"courseId\": \"67829ac79d9254b8eec23e44\",\r\n    \"description\": \"etc...\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/instructor/course",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"instructor",
+										"course"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "327",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"147-ILxxYQB7dMlGBrFJD7E99+FV3Mc\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 11 Jan 2025 16:26:53 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Course updated successfully\",\n    \"course\": {\n        \"_id\": \"67829ac79d9254b8eec23e44\",\n        \"title\": \"UpdatedCourse Title\",\n        \"description\": \"etc...\",\n        \"category\": \"new Category\",\n        \"difficulty\": \"easy\",\n        \"instructorId\": \"678297bd9d9254b8eec23e3f\",\n        \"createdAt\": \"2025-01-11T16:22:31.447Z\",\n        \"updatedAt\": \"2025-01-11T16:26:53.662Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Course",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ODI5N2JkOWQ5MjU0YjhlZWMyM2UzZiIsInJvbGUiOiJpbnN0cnVjdG9yIiwiaWF0IjoxNzM2NjExNzg1LCJleHAiOjE3MzY2MTUzODV9.uhvDsKTBANBFsy0nZBcGToxhRO3RStB2O_lK5H2XCSE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/instructor/course/67829ac79d9254b8eec23e44",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"instructor",
+								"course",
+								"67829ac79d9254b8eec23e44"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Course output",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/instructor/course/67829ac79d9254b8eec23e44",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"instructor",
+										"course",
+										"67829ac79d9254b8eec23e44"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "86",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"56-CnSTz2ebGXLv5in444R3NR16BTY\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 11 Jan 2025 16:29:14 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Course with ID 67829ac79d9254b8eec23e44 has been deleted.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Retrieve Course",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ODI5N2JkOWQ5MjU0YjhlZWMyM2UzZiIsInJvbGUiOiJpbnN0cnVjdG9yIiwiaWF0IjoxNzM2NjExNzg1LCJleHAiOjE3MzY2MTUzODV9.uhvDsKTBANBFsy0nZBcGToxhRO3RStB2O_lK5H2XCSE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/instructor/67829d869d9254b8eec23e49/course",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"instructor",
+								"67829d869d9254b8eec23e49",
+								"course"
+							]
+						},
+						"description": "Retrieves all courses created by a specific instructor using instructor ID  \n\"**/api/instructor/:instructor ID/course**\""
+					},
+					"response": [
+						{
+							"name": "Retrive Course output",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/instructor/67829d869d9254b8eec23e49/course",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"instructor",
+										"67829d869d9254b8eec23e49",
+										"course"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "267",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"10b-9gBMtlIQJj64tcX5GAQF3pLiiqY\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 11 Jan 2025 16:36:31 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Course\": [\n        {\n            \"_id\": \"67829d869d9254b8eec23e49\",\n            \"title\": \"Course Title\",\n            \"description\": \"etc...\",\n            \"category\": \"new Category\",\n            \"difficulty\": \"easy\",\n            \"instructorId\": \"678297bd9d9254b8eec23e3f\",\n            \"createdAt\": \"2025-01-11T16:34:14.934Z\",\n            \"updatedAt\": \"2025-01-11T16:34:14.934Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Create content",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ODI5N2JkOWQ5MjU0YjhlZWMyM2UzZiIsInJvbGUiOiJpbnN0cnVjdG9yIiwiaWF0IjoxNzM2NjExNzg1LCJleHAiOjE3MzY2MTUzODV9.uhvDsKTBANBFsy0nZBcGToxhRO3RStB2O_lK5H2XCSE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/instructor/content",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"instructor",
+								"content"
+							]
+						},
+						"description": "Add contents to a course"
+					},
+					"response": [
+						{
+							"name": "Create content  output",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"courseId\": \"67829d869d9254b8eec23e49\",\r\n    \"pathToLecture\": \"path/to/Lecture\",\r\n    \"type\": \"Video\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/instructor/content",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"instructor",
+										"content"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "156",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9c-KRxVllPpWkhy63flntqZ9oCz/ZE\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 11 Jan 2025 16:44:24 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"content\": {\n        \"courseId\": \"67829d869d9254b8eec23e49\",\n        \"pathToLecture\": \"path/to/Lecture\",\n        \"type\": \"Video\",\n        \"_id\": \"67829fe8cff8ce6333dd1f96\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Content",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ODI5N2JkOWQ5MjU0YjhlZWMyM2UzZiIsInJvbGUiOiJpbnN0cnVjdG9yIiwiaWF0IjoxNzM2NjExNzg1LCJleHAiOjE3MzY2MTUzODV9.uhvDsKTBANBFsy0nZBcGToxhRO3RStB2O_lK5H2XCSE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"contentId\": \"67829fe8cff8ce6333dd1f96\",\r\n    \"pathToLecture\": \"path/to/updated/Lecture\",\r\n    \"type\": \"Video\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/instructor/67829d869d9254b8eec23e49/content",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"instructor",
+								"67829d869d9254b8eec23e49",
+								"content"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Content output",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"contentId\": \"67829fe8cff8ce6333dd1f96\",\r\n    \"pathToLecture\": \"path/to/updated/Lecture\",\r\n    \"type\": \"Video\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/instructor/67829d869d9254b8eec23e49/content",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"instructor",
+										"67829d869d9254b8eec23e49",
+										"content"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "198",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c6-2DAHjzpUzyTk5OhTpAzDfC18HUI\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 11 Jan 2025 17:02:37 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Content updated successfully.\",\n    \"updatedContent\": {\n        \"_id\": \"67829fe8cff8ce6333dd1f96\",\n        \"courseId\": \"67829d869d9254b8eec23e49\",\n        \"pathToLecture\": \"path/to/updated/Lecture\",\n        \"type\": \"Video\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Retrive Content",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ODI5N2JkOWQ5MjU0YjhlZWMyM2UzZiIsInJvbGUiOiJpbnN0cnVjdG9yIiwiaWF0IjoxNzM2NjExNzg1LCJleHAiOjE3MzY2MTUzODV9.uhvDsKTBANBFsy0nZBcGToxhRO3RStB2O_lK5H2XCSE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/instructor/67829d869d9254b8eec23e49/content",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"instructor",
+								"67829d869d9254b8eec23e49",
+								"content"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Retrive Content ouput",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/instructor/67829d869d9254b8eec23e49/content",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"instructor",
+										"67829d869d9254b8eec23e49",
+										"content"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "209",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d1-EmVHNln3EMiq3PLsF6Gj0MN1k9k\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 11 Jan 2025 17:08:13 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"successfully retrive contents\",\n    \"contents\": [\n        {\n            \"_id\": \"67829fe8cff8ce6333dd1f96\",\n            \"courseId\": \"67829d869d9254b8eec23e49\",\n            \"pathToLecture\": \"path/to/updated/Lecture\",\n            \"type\": \"Video\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Content",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ODI5N2JkOWQ5MjU0YjhlZWMyM2UzZiIsInJvbGUiOiJpbnN0cnVjdG9yIiwiaWF0IjoxNzM2NjE1NDYwLCJleHAiOjE3MzY2MTkwNjB9.G2Rf7TUQFwz_cpnc5SRTOAAD685am0vX0BoEUR8Nq0Y",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/instructor/content/67829d869d9254b8eec23e49/67829fe8cff8ce6333dd1f96",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"instructor",
+								"content",
+								"67829d869d9254b8eec23e49",
+								"67829fe8cff8ce6333dd1f96"
+							]
+						},
+						"description": "Deletes specific content from a course\n\n\"**/api/instructor/content/:course ID/:content ID**\""
+					},
+					"response": [
+						{
+							"name": "Delete Content output",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/instructor/content/67829d869d9254b8eec23e49/67829fe8cff8ce6333dd1f96",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"instructor",
+										"content",
+										"67829d869d9254b8eec23e49",
+										"67829fe8cff8ce6333dd1f96"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "328",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"148-IQlDWzp42+IYAc9dGS2ArUK/qu0\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 11 Jan 2025 17:11:14 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Content and associated lesson deleted successfully\",\n    \"course\": {\n        \"_id\": \"67829d869d9254b8eec23e49\",\n        \"title\": \"Course Title\",\n        \"description\": \"etc...\",\n        \"category\": \"new Category\",\n        \"difficulty\": \"easy\",\n        \"instructorId\": \"678297bd9d9254b8eec23e3f\",\n        \"createdAt\": \"2025-01-11T16:34:14.934Z\",\n        \"updatedAt\": \"2025-01-11T17:11:13.901Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Creating Quize",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ODJiZjIwNzNiYTFhZTlkMzU4Mjk5ZSIsInJvbGUiOiJpbnN0cnVjdG9yIiwiaWF0IjoxNzM2NjIxODcxLCJleHAiOjE3MzY2MjU0NzF9.AwqSWRCs0gmQybC1PF9N9I6Vw0RAViYUtI4w4ZjrW_Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n        \"title\": \"Quiz Title\",\r\n        \"questions\": [\r\n        {\r\n          \"questionId\": \"123\",\r\n          \"questionText\": \"What is 2+2?\",\r\n          \"options\": [\"3\", \"4\", \"5\", \"6\"],\r\n          \"correctAnswer\": \"4\"\r\n        },\r\n        {\r\n          \"questionId\": \"1234\",\r\n          \"questionText\": \"What is the capital of France?\",\r\n          \"options\": [\"Paris\", \"London\", \"Berlin\", \"Madrid\"],\r\n          \"correctAnswer\": \"Paris\"\r\n        }\r\n      ]\r\n    }A",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/instructor/quize/67829d869d9254b8eec23e49",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"instructor",
+								"quize",
+								"67829d869d9254b8eec23e49"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Creating Quize output",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": " {\r\n        \"title\": \"Quiz Title\",\r\n        \"questions\": [\r\n        {\r\n          \"questionId\": \"123\",\r\n          \"questionText\": \"What is 2+2?\",\r\n          \"options\": [\"3\", \"4\", \"5\", \"6\"],\r\n          \"correctAnswer\": \"4\"\r\n        },\r\n        {\r\n          \"questionId\": \"1234\",\r\n          \"questionText\": \"What is the capital of France?\",\r\n          \"options\": [\"Paris\", \"London\", \"Berlin\", \"Madrid\"],\r\n          \"correctAnswer\": \"Paris\"\r\n        }\r\n      ]\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/instructor/quize/67829d869d9254b8eec23e49",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"instructor",
+										"quize",
+										"67829d869d9254b8eec23e49"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "498",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1f2-fIsTH7ly6QWVh3OzcPTFKKHsAJc\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 11 Jan 2025 17:48:12 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Quize created successfully\",\n    \"course\": {\n        \"courseId\": \"67829d869d9254b8eec23e49\",\n        \"title\": \"Quiz Title\",\n        \"questions\": [\n            {\n                \"questionId\": \"123\",\n                \"questionText\": \"What is 2+2?\",\n                \"options\": [\n                    \"3\",\n                    \"4\",\n                    \"5\",\n                    \"6\"\n                ],\n                \"correctAnswer\": \"4\"\n            },\n            {\n                \"questionId\": \"1234\",\n                \"questionText\": \"What is the capital of France?\",\n                \"options\": [\n                    \"Paris\",\n                    \"London\",\n                    \"Berlin\",\n                    \"Madrid\"\n                ],\n                \"correctAnswer\": \"Paris\"\n            }\n        ],\n        \"_id\": \"6782aedca9e3abe876b1fb0a\",\n        \"createdAt\": \"2025-01-11T17:48:12.543Z\",\n        \"updatedAt\": \"2025-01-11T17:48:12.543Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Quize",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ODI5N2JkOWQ5MjU0YjhlZWMyM2UzZiIsInJvbGUiOiJpbnN0cnVjdG9yIiwiaWF0IjoxNzM2NjE1NDYwLCJleHAiOjE3MzY2MTkwNjB9.G2Rf7TUQFwz_cpnc5SRTOAAD685am0vX0BoEUR8Nq0Y",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n      \"title\": \"Updated Quiz Title\",\r\n      \"questions\": [\r\n        {\r\n          \"questionId\": \"123\",\r\n          \"questionText\": \"What is 3+3?\",\r\n          \"options\": [\"5\", \"6\", \"7\", \"8\"],\r\n          \"correctAnswer\": \"6\"\r\n        },\r\n        {\r\n          \"questionId\": \"1234\",\r\n          \"questionText\": \"What is the capital of Germany?\",\r\n          \"options\": [\"Berlin\", \"Paris\", \"London\", \"Rome\"],\r\n          \"correctAnswer\": \"Berlin\"\r\n        }\r\n      ]\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/instructor/quize/67829d869d9254b8eec23e49/6782aedca9e3abe876b1fb0a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"instructor",
+								"quize",
+								"67829d869d9254b8eec23e49",
+								"6782aedca9e3abe876b1fb0a"
+							]
+						},
+						"description": "Updates an existing quiz  \n\"**/api/instructor/quize/:course ID/:quize ID**\""
+					},
+					"response": [
+						{
+							"name": "Update Quize output",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n      \"title\": \"Updated Quiz Title\",\r\n      \"questions\": [\r\n        {\r\n          \"questionId\": \"123\",\r\n          \"questionText\": \"What is 3+3?\",\r\n          \"options\": [\"5\", \"6\", \"7\", \"8\"],\r\n          \"correctAnswer\": \"6\"\r\n        },\r\n        {\r\n          \"questionId\": \"1234\",\r\n          \"questionText\": \"What is the capital of Germany?\",\r\n          \"options\": [\"Berlin\", \"Paris\", \"London\", \"Rome\"],\r\n          \"correctAnswer\": \"Berlin\"\r\n        }\r\n      ]\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/instructor/quize/67829d869d9254b8eec23e49/6782aedca9e3abe876b1fb0a",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"instructor",
+										"quize",
+										"67829d869d9254b8eec23e49",
+										"6782aedca9e3abe876b1fb0a"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "506",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1fa-LYOIdjwc2mRVmEDkKJIVNMLvwpw\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 11 Jan 2025 17:51:31 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Quize updated successfully\",\n    \"course\": {\n        \"_id\": \"6782aedca9e3abe876b1fb0a\",\n        \"courseId\": \"67829d869d9254b8eec23e49\",\n        \"title\": \"Updated Quiz Title\",\n        \"questions\": [\n            {\n                \"questionId\": \"123\",\n                \"questionText\": \"What is 3+3?\",\n                \"options\": [\n                    \"5\",\n                    \"6\",\n                    \"7\",\n                    \"8\"\n                ],\n                \"correctAnswer\": \"6\"\n            },\n            {\n                \"questionId\": \"1234\",\n                \"questionText\": \"What is the capital of Germany?\",\n                \"options\": [\n                    \"Berlin\",\n                    \"Paris\",\n                    \"London\",\n                    \"Rome\"\n                ],\n                \"correctAnswer\": \"Berlin\"\n            }\n        ],\n        \"createdAt\": \"2025-01-11T17:48:12.543Z\",\n        \"updatedAt\": \"2025-01-11T17:51:30.910Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Quize",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ODI5N2JkOWQ5MjU0YjhlZWMyM2UzZiIsInJvbGUiOiJpbnN0cnVjdG9yIiwiaWF0IjoxNzM2NjE1NDYwLCJleHAiOjE3MzY2MTkwNjB9.G2Rf7TUQFwz_cpnc5SRTOAAD685am0vX0BoEUR8Nq0Y",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/instructor/quize/6782aedca9e3abe876b1fb0a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"instructor",
+								"quize",
+								"6782aedca9e3abe876b1fb0a"
+							]
+						},
+						"description": "Deletes a specific quiz by its ID  \n\"**/api/instructor/quize/quize ID**\""
+					},
+					"response": [
+						{
+							"name": "Delete Quize output",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/instructor/quize/6782aedca9e3abe876b1fb0a",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"instructor",
+										"quize",
+										"6782aedca9e3abe876b1fb0a"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "85",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"55-YRYNY6/oxne0Buqn98lCncUMEms\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 11 Jan 2025 17:53:25 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Quize with ID 6782aedca9e3abe876b1fb0a has been deleted.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Instructor Created Courses",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ODI5N2JkOWQ5MjU0YjhlZWMyM2UzZiIsInJvbGUiOiJpbnN0cnVjdG9yIiwiaWF0IjoxNzM2NjI0OTYxLCJleHAiOjE3MzY2Mjg1NjF9.IDX7v2zZh-UhV0Y3yWyIfAVN0fU5revEeIsO_OQR2TM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/instructor/dashboard/678297bd9d9254b8eec23e3f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"instructor",
+								"dashboard",
+								"678297bd9d9254b8eec23e3f"
+							]
+						},
+						"description": "Retrives all courses created by the instructor for the dashboard view  \n\"**/api/instructor/dashboard/:instructor ID**\""
+					},
+					"response": [
+						{
+							"name": "Instructor Created Courses output",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/instructor/dashboard/678297bd9d9254b8eec23e3f",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"instructor",
+										"dashboard",
+										"678297bd9d9254b8eec23e3f"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "284",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"11c-xeA5JJZJD0UH3WlA37chZb6+YtE\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 11 Jan 2025 19:50:40 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"sucess\": true,\n    \"AllCourse\": [\n        {\n            \"_id\": \"67829d869d9254b8eec23e49\",\n            \"title\": \"Course Title\",\n            \"description\": \"etc...\",\n            \"category\": \"new Category\",\n            \"difficulty\": \"easy\",\n            \"instructorId\": \"678297bd9d9254b8eec23e3f\",\n            \"createdAt\": \"2025-01-11T16:34:14.934Z\",\n            \"updatedAt\": \"2025-01-11T17:11:13.901Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
