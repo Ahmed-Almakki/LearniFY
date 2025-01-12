@@ -47,7 +47,7 @@ class StudentController {
     const userId = req.user.id;
 
     if (!userId) {
-      return sendError(res, 'Missing UserId');
+      return sendError(res, 'Missing UserId', 400);
     }
 
     const allEnrolled = await Enrollment.retriveAllEnrollment({ userId });
@@ -58,6 +58,7 @@ class StudentController {
     const courses = await Enrollment.retriveAndPopulate({ userId });
     return res.json({
       sucess: true,
+      message: 'All courses',
       allCourses: courses,
     });
   }
@@ -67,15 +68,15 @@ class StudentController {
     if (!query) {
       return sendError(res, 'Missing query');
     }
-    try {
-      const searchcourse = await coursesOp.searchCourse({ title: { $regex: query, $options: 'i' } });
-      if (!searchcourse) {
-        return sendError(res, 'Cannot find course', 404);
-      }
-      return res.status(200).json(searchcourse);
-    } catch (error) {
-      return res.status(500).json({ error: 'Failed to search for courses.' });
+    const searchcourse = await coursesOp.searchCourse({ title: { $regex: query, $options: 'i' } });
+    if (searchcourse.length === 0) {
+      return sendError(res, 'No courses found', 404);
     }
+    return res.status(200).json({
+      success: true,
+      message: 'Courses found',
+      searchcourse,
+    });
   }
 
   static async checkEnrollment(req, res) {

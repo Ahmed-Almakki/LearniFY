@@ -17,13 +17,13 @@ router.post('/enroll', StudentController.enrollCourse);
 router.get('/courses', StudentController.getEnrolledCourses);
 
 // search for course
-router.get('/search/:query', StudentController.searchCourse);
+router.get('/search/:query?', StudentController.searchCourse);
 
 // view all courses "for dashboard"
 router.get('/dashboard', StudentController.viewAllCourse);
 
 // get specife course
-router.get('/enrollment-status/:courseId', StudentController.checkEnrollment);
+router.get('/enrollment-status/:courseId?', StudentController.checkEnrollment);
 
 // show your course
 router.get('/course/content/:courseId', StudentController.GetContent);

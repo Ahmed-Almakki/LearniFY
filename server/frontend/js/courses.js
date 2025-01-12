@@ -15,9 +15,9 @@ document.addEventListener('DOMContentLoaded', function () {
             'Authorization': `Bearer ${localStorage.getItem('token')}`,
         },
       });  
-      const result = await response.json();  
+      const result = await response.json();
       if (response.status === 200) {
-        displayCourses(result);
+        displayCourses(result.searchcourse);
       } else {
         alert(result.message || result.error);
       }
