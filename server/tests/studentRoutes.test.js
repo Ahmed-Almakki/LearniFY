@@ -1,12 +1,10 @@
 import supertest from 'supertest';
 import jwt from 'jsonwebtoken';
 import mongoose from 'mongoose';
-import { app } from '../../app.js';
-import User from '../../models/users.js';
-import enrollments from '../../models/enrollments.js';
-import coursesOp from '../../utils/coursesOp.js';
-import { Content, Courses } from '../../models/courses.js';
-import progress from '../../models/progress.js';
+import { app } from '../app.js';
+import User from '../models/users.js';
+import enrollments from '../models/enrollments.js';
+import { Courses } from '../models/courses.js';
 
 const studentUser = {
   name: 'ahmed',
@@ -31,7 +29,6 @@ describe('student Routes', () => {
   /* eslint-disable jest/no-hooks */
   beforeAll(async () => {
     studReg = await supertest(app).post('/api/user/register').send(studentUser);
-    // console.log('jjjlkjlkjlkjlkjljkjlkjljl', studReg.body.user.id);
     const loginuser = await supertest(app).post('/api/user/login').send({ email: studentUser.email, password: studentUser.password });
 
     token = loginuser.body.token;

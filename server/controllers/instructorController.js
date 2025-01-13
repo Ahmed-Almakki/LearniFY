@@ -37,7 +37,7 @@ class InstructorController {
       return sendError(res, 'Cannot create content', 500);
     }
 
-    return res.status(200).json({
+    return res.status(201).json({
       success: true,
       content: creatContent,
     });
@@ -47,7 +47,7 @@ class InstructorController {
     const { contentId } = req.body;
 
     if (!contentId) {
-      return sendError(res, 'Missing contentId');
+      return sendError(res, 'Missing contentId', 404);
     }
 
     const { pathToLecture, type } = req.body;
@@ -109,7 +109,7 @@ class InstructorController {
   static async GetContent(req, res) {
     const { courseId } = req.params;
     if (!courseId) {
-      return sendError(res, 'Missing coursId');
+      return sendError(res, 'Missing courseId');
     }
     const cont = await CourseOp.retriveContent({ courseId });
     if (!cont) {
@@ -148,7 +148,7 @@ class InstructorController {
       lessons: [],
     });
 
-    return res.status(200).json({
+    return res.status(201).json({
       success: true,
       message: 'Course created successfully',
       course: newCourse,

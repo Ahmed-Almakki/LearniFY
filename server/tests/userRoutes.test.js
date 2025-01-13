@@ -1,6 +1,6 @@
 import supertest from 'supertest';
-import { app } from '../../app.js';
-import User from '../../models/users.js';
+import { app } from '../app.js';
+import User from '../models/users.js';
 
 const newUser = {
   name: 'ahmed',

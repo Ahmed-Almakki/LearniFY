@@ -42,7 +42,7 @@ class QuizeController {
     }
     return res.status(201).json({
       success: true,
-      message: 'Quize created successfully',
+      message: 'Quiz added successfully',
       course: cretquiz,
     });
   }
@@ -70,10 +70,13 @@ class QuizeController {
     */
     const { courseId, quizeId } = req.params;
     if (!courseId) {
-      return sendError(res, 'Missing CourseId or quizeId');
+      return sendError(res, 'Missing CourseId');
+    }
+    if (!quizeId) {
+      return sendError(res, 'Missing quizeId');
     }
     const { questions, title } = req.body;
-    if (!questions || !title || !quizeId) {
+    if (!questions || !title) {
       return sendError(res, 'Missing either question or title');
     }
     const upquz = await quizzesOp.updQuizes(
@@ -85,7 +88,7 @@ class QuizeController {
     }
     return res.json({
       success: true,
-      message: 'Quize updated successfully',
+      message: 'Quiz updated successfully',
       course: upquz,
     });
   }
